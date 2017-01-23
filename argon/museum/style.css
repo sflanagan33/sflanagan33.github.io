@@ -5,9 +5,9 @@
     font-size: 25px;
     text-align: center;
     color: white;
-    background: rgba(127,255,255,0.85);
+    background: rgba(32,44,116,0.5);
     outline: 5px solid rgba(12,25,25,1.0);
     border: 5px;
     margin-bottom: 0px;
-    padding: 0px 0px;
+    padding: 5px 5px;
 }
