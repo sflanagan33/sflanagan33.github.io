@@ -13,13 +13,13 @@
     <body>
         <div hidden>
             <div id="sculpture" class="boxface">AR Sculpture</div>
-            <div id="painting1" class="boxface">Painting #1</div>
-            <div id="painting2" class="boxface">Painting #2</div>
-            <div id="painting3" class="boxface">Painting #3</div>
+            <div id="painting1" class="boxface">Man with Cane</div>
+            <div id="painting2" class="boxface">Man Standing</div>
+            <div id="painting3" class="boxface">Woman Standing</div>
         </div>
         <ar-scene desiredreality="src:url(../resources/reality/panorama/index.html);" panorama="src:url(museum.jpg);lla:'-84.3931 33.7608 309';initial:true;">
         
-            <a-entity id="arsculpture" position = "5 -1 1">
+            <a-entity id="arsculpture" position="7 -1.5 0.5">
                 <a-box position="0 0.0 0" rotation="0  0 0" width="1.0" height="0.2" depth="1.0" color="#EE0000"></a-box>
                 <a-box position="0 0.2 0" rotation="0  5 0" width="0.9" height="0.2" depth="0.9" color="#CC0022"></a-box>
                 <a-box position="0 0.4 0" rotation="0 10 0" width="0.8" height="0.2" depth="0.8" color="#AA0044"></a-box>
@@ -31,12 +31,15 @@
                 <a-entity css-object="div: #sculpture" scale="-0.01 0.01 0.01" rotation="0 90 0" position="0 2 0"></a-entity>
             </a-entity>
             
-            <a-entity id="test" position="0 0 0">
-                <!--<a-sphere position="5 0 0" radius="1" color="#FFAAAA"></a-sphere>-->
-                <a-sphere position="0 0 5" radius="1" color="#0000FF"></a-sphere>
+            <a-entity id="positivezwall" position="0 2.5 5">
+                <a-entity css-object="div: #painting1" scale="-0.01 0.01 0.01" rotation="0 0 0" position=" 1   0 0"></a-entity>
+                <a-entity css-object="div: #painting2" scale="-0.01 0.01 0.01" rotation="0 0 0" position="-0.5 0 0"></a-entity>
             </a-entity>
-            <a-entity css-object="div: #painting2" scale="-0.01 0.01 0.01" rotation="0  0 0" position="0 2 5"></a-entity>
             
+            <!--<a-entity id="test" position="0 0 0">
+                <a-sphere position="5 0 0" radius="1" color="#FFAAAA"></a-sphere>
+                <a-sphere position="0 0 5" radius="1" color="#0000FF"></a-sphere>
+            </a-entity>-->
             <!--<a-entity id="helloworld" position="0 -1 -8">
                 <a-sphere position="0 1.25 -1" radius="1.25" color="#EF2D5E"></a-sphere>
                 <a-box position="-1 0.5 1" rotation="0 45 0" width="1" height="1" depth="1"  color="#4CC3D9"></a-box>
