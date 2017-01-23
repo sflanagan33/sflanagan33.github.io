@@ -1,13 +1,13 @@
 .boxface {
-    opacity: 0.5;
+    opacity: 1;
     width: 150px;
-    height: 90px;
+    height: 30px;
     font-size: 25px;
     text-align: center;
-    color: black;
+    color: white;
     background: rgba(127,255,255,0.85);
     outline: 5px solid rgba(12,25,25,1.0);
-    border: 0px;
+    border: 5px;
     margin-bottom: 0px;
     padding: 0px 0px;
 }
