@@ -5,39 +5,27 @@
         <script src="../resources/js/aframe.min.js"></script>
         <script src="../resources/js/argon.min.js"></script>
         <script src="../build.js"></script>
-        
-        <style>
-            .paintinglabel {
-                opacity: 0.5;
-                width: 90px;
-                height: 90px;
-                font-size: 25px;
-                text-align: center;
-                color: black;
-                background: rgba(127,255,255,0.85);
-                outline: 5px solid rgba(12,25,25,1.0);
-                border: 0px;
-                margin-bottom: 0px;
-                padding: 0px 0px;
-            }
-        </style>
+        <script src="../resources/js/CSS3DArgonRenderer.js"></script>
+        <script src="../resources/js/CSS3DArgonHUD.js"></script>
+        <script src="../resources/js/aframe-look-at-component.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
         <div hidden>
-          <div id="painting1" class="paintinglabel">Painting #1</div>
-          <div id="painting2" class="paintinglabel">Painting #2</div>
-          <div id="painting3" class="paintinglabel">Painting #3</div>
+          <div id="painting1" class="boxface">Painting #1</div>
+          <div id="painting2" class="boxface">Painting #2</div>
+          <div id="painting3" class="boxface">Painting #3</div>
         </div>
         <ar-scene desiredreality="src:url(../resources/reality/panorama/index.html);" panorama="src:url(museum.jpg);lla:'-84.3931 33.7608 309';initial:true;">
             <a-entity id="test" position="0 0 0">
-                <a-sphere position="5 0 0" radius="1" color="#FF0000"></a-sphere>
-                <a-sphere position="0 5 0" radius="1" color="#00FF00"></a-sphere>
-                <a-sphere position="0 0 5" radius="1" color="#0000FF"></a-sphere>
+                <a-sphere position="5 0 0" radius="1" color="#FFAAAA"></a-sphere>
+                <a-sphere position="0 5 0" radius="1" color="#AAFFAA"></a-sphere>
+                <a-sphere position="0 0 5" radius="1" color="#AAAAFF"></a-sphere>
             </a-entity>
-            <a-entity css-object="div: #painting1" scale="0.01 0.01 0.01" rotation="0   0 0" position="-5 0 0"></a-entity>
-            <a-entity css-object="div: #painting1" scale="0.01 0.01 0.01" rotation="0  90 0" position="-5 0 0"></a-entity>
-            <a-entity css-object="div: #painting1" scale="0.01 0.01 0.01" rotation="0 180 0" position="-5 0 0"></a-entity>
-            <a-entity css-object="div: #painting1" scale="0.01 0.01 0.01" rotation="0 270 0" position="-5 0 0"></a-entity>
+            <a-entity css-object="div: #painting1" scale="0.01 0.01 0.01" rotation="0   0 0" position="-10 0 0"></a-entity>
+            <a-entity css-object="div: #painting1" scale="0.01 0.01 0.01" rotation="0  90 0" position="-10 0 0"></a-entity>
+            <a-entity css-object="div: #painting1" scale="0.01 0.01 0.01" rotation="0 180 0" position="-10 0 0"></a-entity>
+            <a-entity css-object="div: #painting1" scale="0.01 0.01 0.01" rotation="0 270 0" position="-10 0 0"></a-entity>
             <!--<a-entity id="helloworld" position="0 -1 -8">
                 <a-sphere position="0 1.25 -1" radius="1.25" color="#EF2D5E"></a-sphere>
                 <a-box position="-1 0.5 1" rotation="0 45 0" width="1" height="1" depth="1"  color="#4CC3D9"></a-box>
