@@ -6,20 +6,21 @@
         <script src="../resources/js/argon.min.js"></script>
         <script src="../build.js"></script>
         
-        .paintinglabel {
-            opacity: 1;
-            width: 150px;
-            height: 50px;
-            font-size: 15px;
-            text-align: center;
-            color: white;
-            background: rgba(127,255,255,0.85);
-            outline: 5px solid rgba(12,25,25,1.0);
-            border: 0px;
-            margin-bottom: 0px;
-            padding: 0px 0px;
-        }
-        
+        <style>
+            .paintinglabel {
+                opacity: 1;
+                width: 150px;
+                height: 50px;
+                font-size: 15px;
+                text-align: center;
+                color: white;
+                background: rgba(127,255,255,0.85);
+                outline: 5px solid rgba(12,25,25,1.0);
+                border: 0px;
+                margin-bottom: 0px;
+                padding: 0px 0px;
+            }
+        </style>
     </head>
     <body>
         <div hidden>
@@ -29,9 +30,9 @@
         </div>
         <ar-scene desiredreality="src:url(../resources/reality/panorama/index.html);" panorama="src:url(museum.jpg);lla:'-84.3931 33.7608 309';initial:true;">
             <a-entity id="test" position="0 0 0">
-                <a-sphere position="5 0 0" radius="1" color="#FFAAAA"></a-sphere>
-                <a-sphere position="0 5 0" radius="1" color="#AAFFAA"></a-sphere>
-                <a-sphere position="0 0 5" radius="1" color="#AAAAFF"></a-sphere>
+                <a-sphere position="5 0 0" radius="1" color="#FF3333"></a-sphere>
+                <a-sphere position="0 5 0" radius="1" color="#33FF33"></a-sphere>
+                <a-sphere position="0 0 5" radius="1" color="#3333FF"></a-sphere>
             </a-entity>
             <a-entity css-object="div: #painting1" scale="0.01 0.01 0.01" rotation="0 0 0" position="-5 0 0"></a-entity>
             
