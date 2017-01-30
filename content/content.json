@@ -1,21 +1,24 @@
-[
-    {
-        "header": "Hello!"
-        "body": "Body Text 1"
-    },
-    
-    {
-        "header": "Analog#Dreams"
-        "body": "Body Text 2"
-    },
-    
-    {
-        "header": "Digital#Painting"
-        "body": "Body Text 3"
-    },
-    
-    {
-        "header": "Yegg#Quest"
-        "body": "Body Text 4"
-    }
+{
+    "website":
+    [
+        {
+            "header": "Hello!"
+            "body": "Body Text 1"
+        },
+        
+        {
+            "header": "Analog#Dreams"
+            "body": "Body Text 2"
+        },
+        
+        {
+            "header": "Digital#Painting"
+            "body": "Body Text 3"
+        },
+        
+        {
+            "header": "Yegg#Quest"
+            "body": "Body Text 4"
+        }
+    ]
 ]
