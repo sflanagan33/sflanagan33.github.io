@@ -2,22 +2,22 @@
     "website":
     [
         {
-            "header": "Hello!"
+            "header": "Hello!",
             "body": "Body Text 1"
         },
         
         {
-            "header": "Analog#Dreams"
+            "header": "Analog#Dreams",
             "body": "Body Text 2"
         },
         
         {
-            "header": "Digital#Painting"
+            "header": "Digital#Painting",
             "body": "Body Text 3"
         },
         
         {
-            "header": "Yegg#Quest"
+            "header": "Yegg#Quest",
             "body": "Body Text 4"
         }
     ]
