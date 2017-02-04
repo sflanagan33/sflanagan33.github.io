@@ -10,19 +10,19 @@
         {
             "headerbutton": "ANALOG#DREAMS",
             "headertext": "SCI-FI SURREALISM",
-            "bodytext": "Analog Dreams is a three-hour first-person puzzle platformer, which I created over the course of five months in VGDev with a group of friends. In the game, you go on a surreal journey through a mysterious, retro-sci-fi facility - inspired by games like Portal and Quantum Conundrum. ##As one of the game's two project leads and its de facto art lead, I personally artpassed and lit all 20 of the final environments in the game, establishing the art direction and modeling all the interactive props."
+            "bodytext": "Analog Dreams is a three-hour first-person puzzle platformer, which I created over the course of five months in VGDev with a group of friends. In the game, you go on a surreal journey through a mysterious, retrofuturistic facility, inspired by games like Portal and Quantum Conundrum. ##As one of the game's two project leads and its de facto art lead, I personally artpassed and lit all 20 of the final environments in the game, establishing the art direction and modeling all the interactive props."
         },
         
         {
             "headerbutton": "DIGITAL#PAINTING",
             "headertext": "CONCEPT ART",
-            "bodytext": "Lorem ipsum."
+            "bodytext": "For a few years, I've been painting in Photoshop to create textures, characters, and concepts for my game projects. I work in a wide variety of styles, from cartoony and colorful to moody sci-fi, and have strong skills in lighting and world design."
         },
         
         {
             "headerbutton": "YEGG#QUEST",
-            "headertext": "NEW DEVELOPMENTS",
-            "bodytext": "Lorem ipsum."
+            "headertext": "IN PROGRESS",
+            "bodytext": "I'm currently working on a new VGDev game: a 3D collectathon platformer where you play as a pudgy cartoon bird, who can roll paint around the world to complete objectives.##I've included a video of the prototype at the right. Everything in it - modeling, texturing, rigging, animation, shader programming - was done by me in a few weeks."
         }
     ]
 }
