@@ -16,13 +16,13 @@
         {
             "headerbutton": "DIGITAL#PAINTING",
             "headertext": "CONCEPT ART",
-            "bodytext": "For a few years, I've been painting in Photoshop to create textures, characters, and concepts for my game projects. I work in a wide variety of styles, from cartoony and colorful to moody sci-fi, and have strong skills in lighting and world design."
+            "bodytext": "For a few years, I've been painting in Photoshop CS5 to create textures, character renderings, and concepts for my game projects. I work in a wide variety of styles, from cartoony and colorful to moody sci-fi, and have strong skills in lighting and game-oriented world design."
         },
         
         {
             "headerbutton": "YEGG#QUEST",
             "headertext": "IN PROGRESS",
-            "bodytext": "I'm currently working on a new VGDev game: a 3D collectathon platformer where you play as a pudgy cartoon bird, who can roll paint around the world to complete objectives.##I've included a video of the prototype at the right. Everything in it - modeling, texturing, rigging, animation, shader programming - was done by me in a few weeks."
+            "bodytext": "I'm currently working on a new VGDev game: a 3D collectathon platformer where you play as a rotund cartoon bird, who can roll paint around the world to complete objectives.##You can view a video of my initial prototype at the right. Everything in it - modeling, texturing, rigging, animation, shader programming - was done by me in a few weeks of work."
         }
     ]
 }
