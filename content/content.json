@@ -22,7 +22,7 @@
         {
             "headerbutton": "YEGG#QUEST",
             "headertext": "IN PROGRESS",
-            "bodytext": "I'm currently working on a new VGDev game: a 3D collectathon platformer where you play as a rotund cartoon bird, who can roll paint around the world to complete objectives.##You can view a video of the game's initial prototype at the right. Everything in it - modeling, texturing, rigging, animation, shader programming - was done by me in a few weeks of work, using Unity, Photoshop CS5 and Blender."
+            "bodytext": "I'm currently the project lead of a new VGDev game: a 3D collectathon platformer where you play as a rotund cartoon bird, who can roll paint around the world to complete puzzles and physics challenges.##You can view a video of the initial prototype at the right. Everything in it - modeling, texturing, rigging, animation, gameplay & shader programming - was done by me in a few weeks of work, using Unity, Photoshop CS5 and Blender."
         }
     ]
 }
