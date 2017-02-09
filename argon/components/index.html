@@ -14,8 +14,8 @@
         tick: function() {
           var object3D = this.el.object3D;
           object3D.rotateX(0.003);
-          object3D.rotateY(0.005);
-          object3D.rotateZ(0.007);
+          object3D.rotateY(0.004);
+          object3D.rotateZ(0.005);
         }
       });
     </script>
@@ -28,7 +28,12 @@
       </a-assets>
 
       <a-entity>
-        <a-collada-model src="#ring" position="0 0 -5" spin></a-collada-model>
+        <a-collada-model src="#ring" position="0 0 -5" spin>
+          <a-collada-model src="#ring" spin scale="0.8 0.8 0.8">
+            <a-collada-model src="#ring" spin scale="0.8 0.8 0.8">
+            </a-collada-model>
+          </a-collada-model>
+        </a-collada-model>
       </a-entity>
     </ar-scene>
   </body>
