@@ -8,8 +8,8 @@
     <script>
       AFRAME.registerComponent('spin', {
         schema: {
-          x: {type: 'int', default: 3}
-          y: {type: 'int', default: 4}
+          x: {type: 'int', default: 3},
+          y: {type: 'int', default: 4},
           z: {type: 'int', default: 5}
         },
 
@@ -32,8 +32,8 @@
         <img id="texture" src="texture.png">
       </a-assets>
 
-      <a-entity obj-model="obj: #cubecenter;" spin="3 0 0" position="-1 0 -5"></a-entity>
-      <a-entity obj-model="obj: #cubeside;"   spin="3 0 0" position=" 1 0 -5"></a-entity>
+      <a-entity obj-model="obj: #cubecenter;" spin="3 0 0" position="-0.4 0 -5"></a-entity>
+      <a-entity obj-model="obj: #cubeside;"   spin="3 0 0" position=" 0.4 0 -5"></a-entity>
 
       <a-entity     obj-model="obj: #ring;" spin position="0 0 -5"   color="#FFAAAA">
         <a-entity   obj-model="obj: #ring;" spin scale="0.8 0.8 0.8" color="#AAFFAA">
