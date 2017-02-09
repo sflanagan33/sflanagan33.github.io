@@ -13,22 +13,23 @@
 
         tick: function() {
           var object3D = this.el.object3D;
-          object3D.rotateX(0.01);
-          object3D.rotateY(0.01);
-          object3D.rotateZ(0.01);
+          object3D.rotateX(0.003);
+          object3D.rotateY(0.005);
+          object3D.rotateZ(0.007);
         }
       });
     </script>
   </head>
   <body>
-    <a-scene>
+    <ar-scene>
       <a-assets>
         <a-asset-item id="ring" src="ring.dae">
         <img id="texture" src="texture.png">
       </a-assets>
 
-      <a-box src="#texture" position="0 0 -5" spin radius="1" color="#FF4444"></a-sphere>
-      <a-collada-model src="#ring" position="0 0 -5"></a-collada-model>
-    </a-scene>
+      <a-entity>
+        <a-collada-model src="#ring" position="0 0 -5" spin></a-collada-model>
+      </a-entity>
+    </ar-scene>
   </body>
 </html>
