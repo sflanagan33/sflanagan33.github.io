@@ -14,10 +14,11 @@
         },
 
         tick: function() {
+          var data = this.data;
           var object3D = this.el.object3D;
-          object3D.rotateX(x * 0.001);
-          object3D.rotateY(y * 0.001);
-          object3D.rotateZ(z * 0.001);
+          object3D.rotateX(data.x * 0.001);
+          object3D.rotateY(data.y * 0.001);
+          object3D.rotateZ(data.z * 0.001);
         }
       });
     </script>
@@ -32,8 +33,8 @@
         <img id="texture" src="texture.png">
       </a-assets>
 
-      <a-entity obj-model="obj: #cubecenter;" spin="3 0 0" position="-0.4 0 -5"></a-entity>
-      <a-entity obj-model="obj: #cubeside;"   spin="3 0 0" position=" 0.4 0 -5"></a-entity>
+      <a-entity obj-model="obj: #cubecenter;" spin="x: 3; y: 0; z: 0;" position="-0.4 0 -5"></a-entity>
+      <a-entity obj-model="obj: #cubeside;"   spin="x: 3; y: 0; z: 0;" position=" 0.4 0 -5"></a-entity>
 
       <a-entity     obj-model="obj: #ring;" spin position="0 0 -5"   color="#FFAAAA">
         <a-entity   obj-model="obj: #ring;" spin scale="0.8 0.8 0.8" color="#AAFFAA">
