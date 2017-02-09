@@ -1,32 +1,34 @@
 <html>
-    <head>
-        <title>Argon Components</title>
-        <meta name="description" content="Argon Geopose Test">
-        <script src="../resources/js/aframe.min.js"></script>
-        <script src="../resources/js/argon.min.js"></script>
-        <script src="../build.js"></script>
-        <script>
-            AFRAME.registerComponent('spin', {
-                schema: {
-                    speed: {type: 'int', default: 5}
-                },
+  <head>
+    <title>Argon Components</title>
+    <meta name="description" content="Argon Components">
+    <script src="../resources/js/aframe.min.js"></script>
+    <script src="../resources/js/argon.min.js"></script>
+    <script src="../build.js"></script>
+    <script>
+      AFRAME.registerComponent('spin', {
+        schema: {
+          speed: {type: 'int', default: 5}
+        },
 
-                tick: function() {
-                    var object3D = this.el.object3D;
-                    object3D.rotateX(0.01);
-                    object3D.rotateY(0.01);
-                    object3D.rotateZ(0.01);
-                }
-            });
-        </script>
-    </head>
-    <body>
-        <ar-scene>
-            <a-assets>
-                <img id="texture" src="texture.png">
-            </a-assets>
+        tick: function() {
+          var object3D = this.el.object3D;
+          object3D.rotateX(0.01);
+          object3D.rotateY(0.01);
+          object3D.rotateZ(0.01);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="ring" src="ring.dae">
+        <img id="texture" src="texture.png">
+      </a-assets>
 
-            <a-box src="#texture" position="0 0 -5" spin radius="1" color="#FF4444"></a-sphere>
-        </ar-scene>
-    </body>
+      <a-box src="#texture" position="0 0 -5" spin radius="1" color="#FF4444"></a-sphere>
+      <a-collada-model src="#ring" position="0 0 -5"></a-collada-model>
+    </a-scene>
+  </body>
 </html>
