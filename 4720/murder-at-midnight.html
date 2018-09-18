@@ -11,7 +11,7 @@
 
 <tw-story></tw-story>
 
-<tw-storydata name="Murder at Midnight" startnode="1" creator="Twine" creator-version="2.2.1" ifid="435AE1F3-3CF6-4D95-A88E-79BC902B0555" zoom="1" format="Harlowe" format-version="2.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-story {
+<tw-storydata name="Murder at Midnight" startnode="50" creator="Twine" creator-version="2.2.1" ifid="435AE1F3-3CF6-4D95-A88E-79BC902B0555" zoom="1" format="Harlowe" format-version="2.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-story {
   background-color: #EBD9AD;
 }
 
@@ -32,21 +32,21 @@ tw-link, .visited {
 tw-link:hover, .visited:hover {
   color: #F69E14;
 }
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">
-</script><tw-passagedata pid="1" name="intro-1" tags="" position="100,500" size="100,100">(display: &quot;VARIABLES&quot;)(align: &quot;=&gt;&lt;=&quot;)[(css: &quot;font-size: 200%;&quot;)[♣ (text-colour: red + black)[♦ ♥] ♠]]
 
-The night air is balmy as you stroll up the cobblestone walkway. Rounding a hedge, you see the mansion of Miss Hearts, a wealthy aristocrat and family friend. Tonight&#39;s invitation - scribbled with an unusual urgency - bounces in your coat pocket.
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">
+
+</script><tw-passagedata pid="1" name="intro-1" tags="" position="200,500" size="100,100">(display: &quot;VARIABLES&quot;)The night air is balmy as you stroll up the cobblestone walkway. Rounding a hedge, you see the mansion of Miss Hearts, a wealthy aristocrat and family friend. Tonight&#39;s invitation - scribbled with an unusual urgency - bounces in your coat pocket.
 
 As you reach the front door, her butler, Jeeves, opens it.
 
-&quot;Ah, the Joker! Miss Hearts has been eagerly awaiting you. Please, [[do come in|intro-2]].&quot;</tw-passagedata><tw-passagedata pid="2" name="intro-2" tags="" position="250,500" size="100,100">You step into the foyer. Gaudy, golden ornamentations sparkle at you from every direction.
+&quot;Ah, the Joker! Miss Hearts has been eagerly awaiting you. Please, [[do come in|intro-2]].&quot;</tw-passagedata><tw-passagedata pid="2" name="intro-2" tags="" position="350,500" size="100,100">You step into the foyer. Gaudy, golden ornamentations sparkle at you from every direction.
 
 As Jeeves helps you with your coat, he quietly pulls you aside. &quot;Miss Hearts is expecting a midnight proposal from one of her guests,&quot; he murmurs, &quot;... but I suspect that something else is afoot. Would you look after her tonight, old friend?&quot;
 
 [[&quot;Of course.&quot;|intro-3a]]
-[[&quot;No promises.&quot;|intro-3b]]</tw-passagedata><tw-passagedata pid="3" name="intro-3a" tags="" position="400,400" size="100,100">(set: $butlerPromise to true)&quot;That&#39;s the ticket,&quot; he smiles. &quot;I&#39;m counting on you.&quot;
+[[&quot;No promises.&quot;|intro-3b]]</tw-passagedata><tw-passagedata pid="3" name="intro-3a" tags="" position="500,400" size="100,100">(set: $butlerPromise to true)&quot;That&#39;s the ticket,&quot; he smiles. &quot;I&#39;m counting on you.&quot;
 
-He takes you down the hall, and the two of you arrive at [[the parlor.|parlor-11:00]]</tw-passagedata><tw-passagedata pid="4" name="intro-3b" tags="" position="400,600" size="100,100">Jeeves furrows his brow. &quot;A wildcard, eh? For her sake, I hope you know what you&#39;re doing.&quot;
+He takes you down the hall, and the two of you arrive at [[the parlor.|parlor-11:00]]</tw-passagedata><tw-passagedata pid="4" name="intro-3b" tags="" position="500,600" size="100,100">Jeeves furrows his brow. &quot;A wildcard, eh? For her sake, I hope you know what you&#39;re doing.&quot;
 
 He takes you down the hall, and the two of you arrive at [[the parlor.|parlor-11:00]]</tw-passagedata><tw-passagedata pid="5" name="parlor-11:00" tags="" position="700,500" size="100,100">(display: &quot;CHIME&quot;) **the hour - it is 11:00 PM.**
 
@@ -58,7 +58,7 @@ Remembering (if: $butlerPromise)[your promise to Jeeves](else:)[the butler&#39;s
 
 All five of you [[begin dancing...|parlor-11:00-dance-2]]</tw-passagedata><tw-passagedata pid="7" name="parlor-11:00-inspect" tags="" position="850,600" size="100,100">(set: $parlorInspected to true)You give a polite apology to Miss Hearts - you would, of course, make for an odd number of dancers. She pouts at you, then scurries off, calling for Jeeves to start the music.
 
-While the other guests are occupied, two objects on the periphery of the room catch your eye: an [[old grandfather clock,|parlor-11:00-inspect-clock]] and an [[ornate Ming vase.|parlor-11:00-inspect-vase]]</tw-passagedata><tw-passagedata pid="8" name="VARIABLES" tags="startup" position="100,200" size="100,200">{
+While the other guests are occupied, two objects on the periphery of the room catch your eye: an [[old grandfather clock,|parlor-11:00-inspect-clock]] and an [[ornate Ming vase.|parlor-11:00-inspect-vase]]</tw-passagedata><tw-passagedata pid="8" name="VARIABLES" tags="startup" position="200,200" size="100,200">{
 	&lt;!-- unimportant / flavor variables --&gt;
 	(set: $butlerPromise to false)
 	(set: $parlorInspected to false)
@@ -81,7 +81,7 @@ You could [[seat it a bit more firmly,|parlor-11:00-inspect-end-good]] or [[igno
 
 In shifting pairs, the men and women twirl hypnotically - Miss Hearts seems particularly taken by Mister Spades, and is pulling out all her best moves when they are together.
 
-Watching the display, you [[lose track of time...|parlor-11:15]]</tw-passagedata><tw-passagedata pid="15" name="CHIME" tags="" position="100,700" size="100,200">**(if: $parlorInspected)[The grandfather clock](else:)[A clock] chimes **</tw-passagedata><tw-passagedata pid="16" name="parlor-11:00-dance-2" tags="" position="1150,400" size="100,100">... and whirling, and twirling...
+Watching the display, you [[lose track of time...|parlor-11:15]]</tw-passagedata><tw-passagedata pid="15" name="CHIME" tags="" position="200,700" size="100,200">**(if: $parlorInspected)[The grandfather clock](else:)[A clock] chimes **</tw-passagedata><tw-passagedata pid="16" name="parlor-11:00-dance-2" tags="" position="1150,400" size="100,100">... and whirling, and twirling...
 
 ... While you exchange partners, you begin to get the feeling that the other guests are watching each other closely... Miss Hearts seems particularly taken by Mister Spades, and is pulling out all her best moves when they are together...
 
@@ -210,7 +210,7 @@ The four of them continue their routine, and [[before you know it...|parlor-11:3
 
 It takes a while to clean up the mess, and [[before you know it...|parlor-11:30]]]</tw-passagedata><tw-passagedata pid="45" name="parlor-11:00-inspect-end-bad" tags="" position="1150,600" size="100,100">In shifting pairs, the men and women twirl hypnotically - Miss Hearts seems particularly taken by Mister Spades, and is pulling out all her best moves when they are together.
 
-Watching the display, you [[lose track of time...|parlor-11:15]]</tw-passagedata><tw-passagedata pid="46" name="parlor-11:45-gun-good" tags="" position="3900,575" size="100,100">(set: $diamondsArmed to false)You remove its lone round, and return the bag to the floor. You&#39;ve made good on your promise.
+Watching the display, you [[lose track of time...|parlor-11:15]]</tw-passagedata><tw-passagedata pid="46" name="parlor-11:45-gun-good" tags="" position="3900,575" size="100,100">(set: $diamondsArmed to false)You remove its lone round, and return the bag to the floor. (if: $butlerPromise)[You&#39;ve made good on your promise.]
 
 Just then, Miss Hearts bursts back into the room, with Miss Diamonds trailing behind her. &quot;I haven&#39;t missed it, have I?&quot; she cries, looking up at [[the clock.|parlor-11:45-finale]]</tw-passagedata><tw-passagedata pid="47" name="parlor-11:45-gun-bad" tags="" position="3900,725" size="100,100">Terrified, you drop the handbag.
 
@@ -221,7 +221,7 @@ Mister Spades grins, picking him up in his arms and carrying him out of the parl
 Jeeves dutifully catches Miss Hearts as she faints, and gives you a wink. &quot;Thank you for saving her life - even if you couldn&#39;t save her heart.&quot;
 
 
-(align: &quot;=&gt;&lt;=&quot;)[*Fin*]</tw-passagedata><tw-passagedata pid="49" name="ending-straight" tags="" position="4950,425" size="100,100">Mister Clubs looks back and forth between Miss Hearts and Mister Spades. &quot;Aw, shucks, the two of you together? That&#39;s great!&quot;
+(align: &quot;=&gt;&lt;=&quot;)[(css: &quot;font-size: 200%;&quot;)[♣♠]]</tw-passagedata><tw-passagedata pid="49" name="ending-straight" tags="" position="4950,425" size="100,100">Mister Clubs looks back and forth between Miss Hearts and Mister Spades. &quot;Aw, shucks, the two of you together? That&#39;s great!&quot;
 
 Mister Spades looks down at her. &quot;Attempted murder or not, you still haven&#39;t given me a reply, you know.&quot;
 
@@ -232,7 +232,14 @@ Jeeves comes over to you, a smile on his face and your coat in his arms.
 &quot;Thank you, Joker. You looked out for her, and she&#39;s alive because of it.&quot;
 
 
-(align: &quot;=&gt;&lt;=&quot;)[*Fin*]</tw-passagedata></tw-storydata>
+(align: &quot;=&gt;&lt;=&quot;)[(css: &quot;font-size: 200%;&quot;)[(text-colour: red + black)[♥]♠]]</tw-passagedata><tw-passagedata pid="50" name="boot" tags="" position="50,500" size="100,100">(align: &quot;=&gt;&lt;=&quot;)[(css: &quot;font-size: 200%;&quot;)[♣ (text-colour: red + black)[♦ ♥] ♠
+
+(text-colour: red + black)[Murder] at
+Midnight]
+
+*by Sean Flanagan*
+
+[[Begin|intro-1]]]</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
