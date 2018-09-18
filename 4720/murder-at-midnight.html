@@ -1,0 +1,223 @@
+<tw-storydata name="Murder at Midnight" startnode="1" creator="Twine" creator-version="2.2.1" ifid="435AE1F3-3CF6-4D95-A88E-79BC902B0555" zoom="1" format="Harlowe" format-version="2.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-story {
+  background-color: #EBD9AD;
+}
+
+tw-passage {
+  background-color: #F8EEC4;
+  border-radius: 0.2em;
+  padding: 4em;
+  
+  font-family: "Palatino Linotype", Palatino, serif;
+  font-size: 1.5rem;
+  color: #07340F;
+}
+
+tw-link, .visited {
+  color: #C64100;
+}
+
+tw-link:hover, .visited:hover {
+  color: #F69E14;
+}
+
+tw-sidebar {
+  display: none;
+}
+</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="intro-1" tags="" position="100,500" size="100,100">(display: &quot;VARIABLES&quot;)The night air is balmy as you stroll up the cobblestone walkway. Rounding a hedge, you see the mansion of Miss Hearts, a wealthy aristocrat and family friend. Tonight&#39;s invitation - scribbled with an unusual urgency - bounces in your coat pocket.
+
+As you reach the front door, her butler, Jeeves, opens it.
+
+&quot;Ah, the Joker! Miss Hearts has been eagerly awaiting you. Please, [[do come in|intro-2]].&quot;</tw-passagedata><tw-passagedata pid="2" name="intro-2" tags="" position="250,500" size="100,100">You step into the foyer. Gaudy, golden ornamentations sparkle at you from every direction.
+
+As Jeeves helps you with your coat, he quietly pulls you aside. &quot;Miss Hearts is expecting a midnight proposal from one of her guests,&quot; he murmurs, &quot;... but I suspect that something else is afoot. Would you look after her tonight, old friend?&quot;
+
+[[&quot;Of course.&quot;|intro-3a]]
+[[&quot;No promises.&quot;|intro-3b]]</tw-passagedata><tw-passagedata pid="3" name="intro-3a" tags="" position="400,400" size="100,100">(set: $butlerPromise to true)&quot;That&#39;s the ticket,&quot; he smiles. &quot;I&#39;m counting on you.&quot;
+
+He takes you down the hall, and the two of you arrive at [[the parlor.|parlor-11:00]]</tw-passagedata><tw-passagedata pid="4" name="intro-3b" tags="" position="400,600" size="100,100">Jeeves furrows his brow. &quot;A wildcard, eh? For her sake, I hope you know what you&#39;re doing.&quot;
+
+He takes you down the hall, and the two of you arrive at [[the parlor.|parlor-11:00]]</tw-passagedata><tw-passagedata pid="5" name="parlor-11:00" tags="" position="700,500" size="100,100">(display: &quot;CHIME&quot;) **the hour - it is 11:00 PM.**
+
+Stepping inside, you barely catch a glimpse of the other guests - the portly Mister Clubs, the reserved Miss Diamonds, and the handsome Mister Spades - before you are engulfed in an enormous hug.
+
+&quot;JOKIE!&quot; Miss Hearts sings, bouncing up and down. &quot;I&#39;m *so* glad you could make it to our little soirée! We were just about to begin dancing - wouldn&#39;t you like to [[join us|parlor-11:00-dance-1]]?&quot;
+
+Remembering (if: $butlerPromise)[your promise to Jeeves](else:)[the butler&#39;s warning], it might behoove you to [[inspect the parlor|parlor-11:00-inspect]] instead.</tw-passagedata><tw-passagedata pid="6" name="parlor-11:00-dance-1" tags="" position="850,400" size="100,100">You agree to dance, and Miss Hearts pulls you into the center of the room. &quot;Jeeves, start the music!&quot; she cries.
+
+All five of you [[begin dancing...|parlor-11:00-dance-2]]</tw-passagedata><tw-passagedata pid="7" name="parlor-11:00-inspect" tags="" position="850,600" size="100,100">(set: $parlorInspected to true)You give a polite apology to Miss Hearts - you would, of course, make for an odd number of dancers. She pouts at you, then scurries off, calling for Jeeves to start the music.
+
+While the other guests are occupied, two objects on the periphery of the room catch your eye: an [[old grandfather clock,|parlor-11:00-inspect-clock]] and an [[ornate Ming vase.|parlor-11:00-inspect-vase]]</tw-passagedata><tw-passagedata pid="8" name="VARIABLES" tags="startup" position="100,200" size="100,200">{
+	&lt;!-- unimportant / flavor variables --&gt;
+	(set: $butlerPromise to false)
+	(set: $parlorInspected to false)
+	
+	&lt;!-- important / story-altering variables --&gt;
+	(set: $vaseFixed to false)
+	(set: $clubsProposal to false)
+	(set: $heartsNegged to false)
+	(set: $spadesInCloset to true)
+	(set: $diamondsArmed to true)
+}</tw-passagedata><tw-passagedata pid="9" name="parlor-11:15" tags="" position="1500,500" size="100,100">(display: &quot;CHIME&quot;) **the quarter hour - it is 11:15 PM.**
+
+&quot;Phooey,&quot; says Mister Spades, still holding an ecstatic Miss Hearts in his arms. &quot;One more number?&quot;
+
+&quot;Play a fast one, Jeeves!&quot; she calls - and the two of them are off again, [[careening around the room...|parlor-11:15-careening]]</tw-passagedata><tw-passagedata pid="10" name="11:00 PM" tags="" position="700,200" size="100,200"></tw-passagedata><tw-passagedata pid="11" name="11:15 PM" tags="" position="1500,200" size="100,200"></tw-passagedata><tw-passagedata pid="12" name="parlor-11:00-inspect-clock" tags="" position="1000,525" size="100,100">It&#39;s a stately piece - one that has most likely been in the Hearts family for generations. You briefly consider fiddling with the mechanism to give yourself more time before midnight, but this seems like it would... complicate things.
+
+You turn your attention back to [[the dancers.|parlor-11:00-inspect-end-bad]]</tw-passagedata><tw-passagedata pid="13" name="parlor-11:00-inspect-vase" tags="" position="1000,675" size="100,100">You peer into the vase, but nothing is inside. However, you notice that it is dangerously close to the edge of its pedestal.
+
+You could [[seat it a bit more firmly,|parlor-11:00-inspect-end-good]] or [[ignore it.|parlor-11:00-inspect-end-bad]]</tw-passagedata><tw-passagedata pid="14" name="parlor-11:00-inspect-end-good" tags="" position="1150,750" size="100,100">(set: $vaseFixed to true)With the vase secured, you turn your attention back to the dancers.
+
+In shifting pairs, the men and women twirl hypnotically - Miss Hearts seems particularly taken by Mister Spades, and is pulling out all her best moves when they are together.
+
+Watching the display, you [[lose track of time...|parlor-11:15]]</tw-passagedata><tw-passagedata pid="15" name="CHIME" tags="" position="100,700" size="100,200">**(if: $parlorInspected)[The grandfather clock](else:)[A clock] chimes **</tw-passagedata><tw-passagedata pid="16" name="parlor-11:00-dance-2" tags="" position="1150,400" size="100,100">... and whirling, and twirling...
+
+... While you exchange partners, you begin to get the feeling that the other guests are watching each other closely... Miss Hearts seems particularly taken by Mister Spades, and is pulling out all her best moves when they are together...
+
+... In all the bustle, you [[lose track of time...|parlor-11:15]]</tw-passagedata><tw-passagedata pid="17" name="11:30 PM" tags="" position="1900,200" size="100,200"></tw-passagedata><tw-passagedata pid="18" name="parlor-11:30" tags="" position="1900,500" size="100,100">(display: &quot;CHIME&quot;) **the half hour - it is 11:30 PM.**
+
+(if: $vaseFixed is false)[Having cleared the carpet of debris, ]Jeeves brings refreshments, and the guests settle down into conversation.
+
+You decide to...
+[[talk to Mister Clubs.|parlor-11:30-clubs]]
+[[talk to Miss Hearts.|parlor-11:30-hearts]]</tw-passagedata><tw-passagedata pid="19" name="parlor-11:30-clubs" tags="" position="2050,425" size="100,100">Mister Clubs is a stout, grubby man - kind enough, but a part of you wonders why Miss Hearts keeps inviting him over.
+
+&quot;How ya been, Joker?&quot; he barks, slapping you on the back. &quot;Get a load of this parlor, huh? You could buy a house with half the stuff in this room.&quot;
+
+He turns over a brass candlestick, as if checking it for imperfections.
+
+[[&quot;Or an apartment, in today&#39;s market.&quot;|parlor-11:30-clubs-question]]</tw-passagedata><tw-passagedata pid="20" name="parlor-11:45-diamonds" tags="" position="2850,350" size="100,100">Miss Diamonds is as taciturn as ever, clutching her red handbag tightly as she watches the performance. &quot;I see Miss Hearts invited you, too. Isn&#39;t she charitable?&quot;
+
+[[&quot;Why, charitable enough for the both of us.&quot;|parlor-11:45-diamonds-neg]]</tw-passagedata><tw-passagedata pid="21" name="parlor-11:30-hearts" tags="" position="2050,575" size="100,100">Miss Hearts, still a bit flushed from all the dancing(if: $vaseFixed is false)[ and destruction], is brimming with excitement and fidgeting with her hair.
+
+&quot;Oh, Jokie, do you think he&#39;ll ask me? Tell me - how do I look?&quot;
+
+[[&quot;You look wonderful.&quot;|parlor-11:30-hearts-compliment]]
+[[&quot;Well, you&#39;ve got a little... something on your...&quot;|parlor-11:30-hearts-neg]]</tw-passagedata><tw-passagedata pid="22" name="parlor-11:45-spades" tags="" position="2850,650" size="100,100">Mister Spades is tall and handsome - an old friend of yours from the academy. Normally a stoic man, he now seems uncharacteristically on edge(if: $heartsNegged)[.](else:)[ watching Miss Hearts sing.]
+
+&quot;Joker,&quot; he blurts out, &quot;can I ask you a question?&quot;
+
+[[You nod.|parlor-11:45-spades-question]]</tw-passagedata><tw-passagedata pid="23" name="parlor-11:30-clubs-question" tags="" position="2200,350" size="100,100">Mister Clubs laughs uproariously. &quot;Hey, that&#39;s a good one! Say, I&#39;ve been meaning to ask you something.&quot;
+
+He pulls you aside, lowering his voice. &quot;You&#39;ve known Miss H for a while, yeah? You think I got a chance with her?&quot;
+
+[[&quot;Won&#39;t know until you try, right?&quot;|parlor-11:30-clubs-yes]]
+[[&quot;A snowball&#39;s chance in hell, yes.&quot;|parlor-11:30-clubs-no]]</tw-passagedata><tw-passagedata pid="24" name="parlor-11:30-hearts-compliment" tags="" position="2350,575" size="100,100">Miss Hearts beams at you. &quot;Too kind, Jokie! Really... too kind.&quot; She leans forward and mutters, &quot;You know I&#39;m going for Mister Spades, right?&quot;
+
+You roll your eyes and engage the other guests with some small talk. Again, you feel time [[slipping away...|parlor-11:45]]</tw-passagedata><tw-passagedata pid="25" name="parlor-11:30-hearts-neg" tags="" position="2350,725" size="100,100">(set: $heartsNegged to true)You vaguely gesture at your face, hoping she gets the picture. Miss Hearts looks horrified. &quot;Oh, no - I *must* be flawless for this!&quot;
+
+She grabs Miss Diamonds by the arm, and drags her off to the bathroom.
+
+You feel a bit guilty about that, but you engage the two men in some small talk. Again, you feel time [[slipping away...|parlor-11:45]]</tw-passagedata><tw-passagedata pid="26" name="parlor-11:45-diamonds-neg" tags="" position="3000,350" size="100,100">Miss Diamonds stares daggers at you, and you get the feeling that your conversation with her has ended.
+
+You instead turn your attention to [[Mister Spades...|parlor-11:45-spades]]</tw-passagedata><tw-passagedata pid="27" name="parlor-11:45" tags="" position="2700,500" size="100,100">**The clock chimes yet again - it is 11:45 PM.** Is it getting hotter in here? You tug at your collar.
+
+(if: $heartsNegged)[Mister Spades frowns, looking over at the clock. &quot;Miss Hearts was planning to perform an aria for us,&quot; he says, &quot;but it seems something else has demanded her attention.&quot; He looks at Mister Clubs, but his expression is unreadable.
+
+You decide to...
+[[talk to Mister Spades.|parlor-11:45-spades]]
+[[rest for a moment.|parlor-11:45-armchair]]](else:)[&quot;Time for my *solo*!&quot; Miss Hearts trills, taking her place by the piano. &quot;Mister Clubs, be a dear and accompany me, won&#39;t you?&quot;(if: $clubsProposal)[
+
+As he makes his way over, Mister Clubs waggles his eyebrows at you. You wonder what you&#39;ve unleashed.]
+
+You are left with Mister Spades and Miss Diamonds, who seem uncomfortable being alone with each other.
+
+You break the tension by...
+[[talking to Mister Spades.|parlor-11:45-spades]]
+[[talking to Miss Diamonds.|parlor-11:45-diamonds]]]</tw-passagedata><tw-passagedata pid="28" name="parlor-11:30-clubs-no" tags="" position="2350,425" size="100,100">He looks crestfallen. &quot;Well, I know she&#39;s a bit out of my league, but... hey, a guy can dream, right?&quot;
+
+You roll your eyes and engage the other guests with some small talk. Again, you feel time [[slipping away...|parlor-11:45]]</tw-passagedata><tw-passagedata pid="29" name="11:45 PM" tags="" position="2700,200" size="100,200"></tw-passagedata><tw-passagedata pid="30" name="parlor-11:30-clubs-yes" tags="" position="2350,275" size="100,100">(set: $clubsProposal to true)He gives you a sly grin. &quot;Say, that&#39;s the spirit! Maybe tonight could be my lucky night.&quot;
+
+You&#39;re not entirely sure, but you feel like you just made things *much* worse.
+
+You engage the other guests with some small talk. Again, you feel time [[slipping away...|parlor-11:45]]</tw-passagedata><tw-passagedata pid="31" name="ending-spades" tags="" position="4600,500" size="100,100">(if: $spadesInCloset)[Mister Spades drops to one knee in front of Miss Hearts, and presents to her a beautiful diamond ring. She squeals with delight.
+
+&quot;Miss Hearts,&quot; he says, &quot;will you marry me?&quot;](else:)[Mister Spades drops to one knee in front of Mister Clubs, and presents to him a beautiful diamond ring. &quot;I&#39;m tired of hiding!&quot; he yells. &quot;I&#39;m in love with you, Clubs.&quot;
+
+&quot;Wait, WHAT?&quot; Miss Hearts shrieks.]
+
+(if: $clubsProposal)[[[But then --|ending-clubs]]](else:)[[[But then --|ending-diamonds]]]</tw-passagedata><tw-passagedata pid="32" name="parlor-11:45-armchair" tags="" position="3300,500" size="100,100">You collapse into an armchair, weary with anticipation.
+
+(if: $heartsNegged)[...
+
+Suddenly, [[something red|parlor-11:45-handbag]] on the floor catches your eye.](else:)[Across the room, Miss Hearts croons her way through the rest of her repertoire, finishing with a difficult aria. You applaud politely with Mister Spades and Miss Diamonds.
+
+Miss Hearts curtsies, and you notice her stealing a furtive glance at [[the clock.|parlor-11:45-finale]]]</tw-passagedata><tw-passagedata pid="33" name="parlor-11:45-spades-question" tags="" position="3000,650" size="100,100">&quot;Say that you&#39;ve been keeping something... secret... for a long time,&quot; he mumbles. &quot;Something uncomfortable. And now, on the eve of something very important, it seems... very pertinent... that the something be made clear.&quot;
+
+Mister Spades is staring into your soul.
+
+[[&quot;I would come clean.&quot;|parlor-11:45-spades-yes]]
+[[&quot;Some things are better left unsaid.&quot;|parlor-11:45-spades-no]]</tw-passagedata><tw-passagedata pid="34" name="parlor-11:45-spades-yes" tags="" position="3150,575" size="100,100">(set: $spadesInCloset to false)&quot;I... yes,&quot; he breathes. &quot;Yes. That is exactly what I needed to hear. Thank you.&quot;
+
+After everything else that&#39;s happened tonight, his stilted tone is getting to you - and you feel an overwhelming urge to [[rest for a moment.|parlor-11:45-armchair]]</tw-passagedata><tw-passagedata pid="35" name="parlor-11:45-spades-no" tags="" position="3150,725" size="100,100">&quot;I... yes,&quot; he sighs. &quot;You&#39;re right, Joker. It will be easier this way.&quot;
+
+After everything else that&#39;s happened tonight, his stilted tone is getting to you - and you feel an overwhelming urge to [[rest for a moment.|parlor-11:45-armchair]]</tw-passagedata><tw-passagedata pid="36" name="parlor-11:45-handbag" tags="" position="3450,650" size="100,100">You lean forward to get a better look, and realize it&#39;s Miss Diamonds&#39; handbag - she must have dropped it when Miss Hearts dragged her off.
+
+Feeling courteous, [[you walk over and pick it up off the floor.|parlor-11:45-gun-1]]</tw-passagedata><tw-passagedata pid="37" name="parlor-11:45-finale" tags="" position="4050,500" size="100,100">... Ah, how could you have forgotten?
+
+As the clock nears the stroke of midnight, the atmosphere in the room grows impossibly dense. The five of you gather together, but there is no more conversation.
+
+Suddenly, everyone is waiting... for [[something.|ending-intro]]</tw-passagedata><tw-passagedata pid="38" name="ending-intro" tags="" position="4400,500" size="100,100">**The clock chimes. It is midnight.**
+
+And [[things start happening|ending-spades]] very quickly.</tw-passagedata><tw-passagedata pid="39" name="12:00 PM" tags="" position="4400,200" size="100,200"></tw-passagedata><tw-passagedata pid="40" name="parlor-11:45-gun-1" tags="" position="3600,650" size="100,100">...
+
+[[Something heavy|parlor-11:45-gun-2]] shifts inside.</tw-passagedata><tw-passagedata pid="41" name="parlor-11:45-gun-2" tags="" position="3750,650" size="100,100">You unzip the bag, and nearly drop it in shock - nestled next to Miss Diamonds&#39; hand mirror is a small, red pistol.
+
+While Mister Spades and Mister Clubs are engaged in conversation, you decide to...
+[[disarm the pistol.|parlor-11:45-gun-good]]
+[[forget what you&#39;ve seen.|parlor-11:45-gun-bad]]</tw-passagedata><tw-passagedata pid="42" name="ending-clubs" tags="" position="4700,650" size="100,100">(if: $spadesInCloset)[Mister Clubs kneels down right next to him, and presents Miss Hearts with the candlestick. &quot;C&#39;mon, baby, let&#39;s go to Milan!&quot;
+
+Miss Heart&#39;s jaw drops. &quot;Wait, WHAT?&quot;](else:)[Mister Clubs, giving Mister Spades a confused look, kneels down in front of Miss Hearts and presents her with the candlestick. &quot;C&#39;mon, baby, let&#39;s go to Milan!&quot;
+
+Miss Hearts looks as if she is going to faint.]
+
+[[But THEN --|ending-diamonds]]</tw-passagedata><tw-passagedata pid="43" name="ending-diamonds" tags="" position="4800,500" size="100,100">(if: $diamondsArmed)[There is a loud BANG, and Miss Hearts crumples to the floor. (if: ($clubsProposal is true or $spadesInCloset is false))[Both men yell in horror.](else:)[Mister Spades yells in horror.]
+
+You feel yourself going faint - if only you had [[done things differently...|intro-1]]](else:)[There is a loud CLICK - and everyone turns to look at Miss Diamonds, who drops her pistol in shock.
+
+&quot;Dee,&quot; whimpers Miss Hearts, &quot;... did you just try to shoot me?&quot;
+
+(if: $spadesInCloset)[Miss Diamonds stammers. &quot;I&#39;ve - I&#39;ve HAD IT with you getting all the attention! He used to love *me*!
+
+Mister Spades stands up, fixing Miss Diamonds in his steely gaze. &quot;Yes, Dee. I *used* to love you.&quot;
+
+She freezes, and Jeeves takes the opportunity to [[put her in handcuffs...|ending-straight]]](else:)[Miss Diamonds stammers, her eyes darting back and forth between Mister Spades and Miss Hearts. &quot;But I - I thought you were going to propose to *her*!&quot;
+
+Mister Spades stands up and smiles. &quot;No, Dee. I&#39;m tired of living a lie.&quot;
+
+The two women look at each other with equal bewilderment. Jeeves takes the opportunity to [[put Miss Diamonds in handcuffs...|ending-gay]]]]</tw-passagedata><tw-passagedata pid="44" name="parlor-11:15-careening" tags="" position="1650,500" size="100,100">(if: $parlorInspected)[... and bumping straight into the Ming vase, ](else:)[... and bumping into a priceless Ming vase, ](if: $vaseFixed)[which wobbles on its pedestal.
+
+&quot;Oh, dear,&quot; chuckles Mister Spades. &quot;Perhaps we should take a break, after all?&quot;
+
+Miss Hearts looks miffed. &quot;A slow one, Jeeves!&quot;
+
+The four of them continue their routine, and [[before you know it...|parlor-11:30]]](else:)[which promptly topples over and shatters on the floor.
+
+&quot;Oh, no!&quot; cries Miss Hearts, as she and Mister Spades step over the pieces. &quot;That was a gift from a diplomat, or something. Jeeves, can you --&quot;
+
+&quot;Already on it, Miss,&quot; he calls, appearing again with a broom and dustpan.
+
+It takes a while to clean up the mess, and [[before you know it...|parlor-11:30]]]</tw-passagedata><tw-passagedata pid="45" name="parlor-11:00-inspect-end-bad" tags="" position="1150,600" size="100,100">In shifting pairs, the men and women twirl hypnotically - Miss Hearts seems particularly taken by Mister Spades, and is pulling out all her best moves when they are together.
+
+Watching the display, you [[lose track of time...|parlor-11:15]]</tw-passagedata><tw-passagedata pid="46" name="parlor-11:45-gun-good" tags="" position="3900,575" size="100,100">(set: $diamondsArmed to false)You remove its lone round, and return the bag to the floor. You&#39;ve made good on your promise.
+
+Just then, Miss Hearts bursts back into the room, with Miss Diamonds trailing behind her. &quot;I haven&#39;t missed it, have I?&quot; she cries, looking up at [[the clock.|parlor-11:45-finale]]</tw-passagedata><tw-passagedata pid="47" name="parlor-11:45-gun-bad" tags="" position="3900,725" size="100,100">Terrified, you drop the handbag.
+
+Just then, Miss Hearts bursts back into the room, with Miss Diamonds trailing behind her. &quot;I haven&#39;t missed it, have I?&quot; she cries, looking up at [[the clock.|parlor-11:45-finale]]</tw-passagedata><tw-passagedata pid="48" name="ending-gay" tags="" position="4950,575" size="100,100">Mister Clubs blushes, looking up at Mister Spades. &quot;Aw, shucks. I *did* always think you were hot.&quot;
+
+Mister Spades grins, picking him up in his arms and carrying him out of the parlor.
+
+Jeeves dutifully catches Miss Hearts as she faints, and gives you a wink. &quot;Thank you for saving her life - even if you couldn&#39;t save her heart.&quot;
+
+
+(align: &quot;=&gt;&lt;=&quot;)[*Fin*]</tw-passagedata><tw-passagedata pid="49" name="ending-straight" tags="" position="4950,425" size="100,100">Mister Clubs looks back and forth between Miss Hearts and Mister Spades. &quot;Aw, shucks, the two of you together? That&#39;s great!&quot;
+
+Mister Spades looks down at her. &quot;Attempted murder or not, you still haven&#39;t given me a reply, you know.&quot;
+
+&quot;Yeah, uh, can you give me a minute?&quot; Miss Hearts replies. &quot;This is kind of a lot...&quot;
+
+Jeeves comes over to you, a smile on his face and your coat in his arms.
+
+&quot;Thank you, Joker. You looked out for her, and she&#39;s alive because of it.&quot;
+
+
+(align: &quot;=&gt;&lt;=&quot;)[*Fin*]</tw-passagedata></tw-storydata>
