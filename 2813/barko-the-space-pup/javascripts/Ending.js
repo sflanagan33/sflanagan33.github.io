@@ -95,7 +95,7 @@ SI.Ending.prototype.draw = function(game) {
 
 		// Draw statistics
 
-		var text = "you sheared BARKO in " + (this.onFrame / 60).toFixed(2) + " seconds";
+		var text = "you sheared BARKO in " + (this.onFrame / 60).toFixed(2) + " seconds   |   press X to retry";
 
 		game.graphics.font = "bold 20px Arial";
 		game.graphics.fillStyle = '#0a1163';

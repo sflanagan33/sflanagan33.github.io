@@ -1,1 +1,1 @@
-window.onload = SI.Game();
+window.onload = SI.Game(true);

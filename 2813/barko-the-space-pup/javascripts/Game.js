@@ -6,20 +6,24 @@ SI.Input = {
 	Left: 37,
 	Up: 38,
 	Right: 39,
+	Retry: 88,
 	Cut: 90
 }
 
 // ================================================================================================ constructor
 
-SI.Game = function() {
+SI.Game = function(firstTime) {
 
 	// Instructions
 
-	confirm("\n~~~~~~~~ BARKO THE SPACE PUP ~~~~~~~~"
-		  + "\n\nThe fur of the venerable BARKO is too long! His scintillating coat must be trimmed in the name of justice. However, he is very bad at sitting still."
-		  + "\n\nLEFT and RIGHT ARROWS to steer"
-		  + "\nUP ARROW for thrust"
-		  + "\nZ to snip");
+	if (firstTime) {
+		confirm("~~~~~~~~ BARKO THE SPACE PUP ~~~~~~~~"
+			  + "\n\nThe fur of the venerable BARKO is too long! His scintillating coat must be trimmed in the name of justice. However, he is very bad at sitting still."
+			  + "\n\nLEFT and RIGHT ARROWS to steer"
+			  + "\nUP ARROW for thrust"
+			  + "\nZ to snip"
+			  + "\nX to retry");
+	}
 
 	// Initialize the canvas
 
@@ -47,6 +51,11 @@ SI.Game = function() {
 
 	var self = this;
 	this.clock = setInterval(function () {
+
+		if (self.input[SI.Input.Retry]) {
+			clearInterval(self.clock);
+			SI.Game(false);
+		}
 
 		self.ship.step(self);
 		self.dog.step(self);

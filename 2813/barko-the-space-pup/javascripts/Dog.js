@@ -101,7 +101,9 @@ SI.Dog.prototype.step = function(game) {
 
 				if (this.fur[x][y] && justCut) {
 					var t = this.furPosition(x, y);
-					var dist = Math.hypot(game.ship.x - t[0], game.ship.y - t[1]);
+					var a = game.ship.x - t[0];
+					var b = game.ship.y - t[1];
+					var dist = Math.sqrt(a * a + b * b);
 
 					if (dist < 50)
 						this.fur[x][y] = false;
