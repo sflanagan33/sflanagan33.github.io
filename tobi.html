@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+  
+  <title>ToBI Breakdown</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,600,800|Open+Sans:400,600">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/png" href="content/favicon.ico">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  <style>
+  
+    h1,h2,h3,h4,h5 { font-family: "Poppins", sans-serif; line-height: 90%; }
+    h1 { font-size: 60px; font-weight: 800; padding-bottom: 0.25em; }
+    h2 { font-size: 30px; font-weight: 600; }
+    h3 { font-size: 20px; font-weight: 400; }
+    body { font-family: "Open Sans", sans-serif; font-size: 15px; }
+    a { font-family: "Open Sans", sans-serif; font-weight: 600; color: #E91E63; }
+    
+    hr {
+      border-width: 4px;
+      border-color: #E1ECF3;
+      padding: 0px;
+      margin: 0px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .contained-text {
+      width: 50%;
+      padding: 50px;
+      float: left;
+      overflow: hidden;
+    }
+        
+    .contained-images {
+      width: 50%;
+      padding: 50px;
+      padding-top: 7.25em;
+      float: left;
+      overflow: hidden;
+    }
+    
+    .clear {
+      clear: both;
+    }
+    
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    
+  </style>
+  
+  <body>
+  
+    <!----------------------------------------------------------------------------->
+    <!--------------------------------------------------------------------- HERO -->
+    <!----------------------------------------------------------------------------->
+  
+    <div style="background: linear-gradient(90deg, #EAF4F5 0%, #FFFFFF 10%, #FFFFFF 50%, #E1ECF3 50%)">
+      <div class="container">
+      
+        <div class="contained-text">
+          <br><br><br><br><h2>the tech & effects behind</h2>
+          <h1 style="font-size:80px; color:#E91E63;">TROUBLE ON BERYL ISLE</h1>
+          <br>
+          <p>Hey! If you're here, you're probably wondering what kind of work I put into making this project happen. Text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text.</p>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+      </div>
+    </div>
+    
+    <!----------------------------------------------------------------------------->
+    <!------------------------------------------------------------- EDITOR TOOLS -->
+    <!----------------------------------------------------------------------------->
+  
+    <hr>
+    <div style="background: linear-gradient(90deg, #EAF4F5 0%, #FFFFFF 10%, #FFFFFF 50%, #E91E63 50%)">
+      <div class="container">
+      
+        <!------------------------------------------------------------- HEADER -->
+        
+        <div class="contained-text">
+          <h1 style="color:#E91E63;">EDITOR TOOLS</h1>
+          <p>Trouble on Beryl Isle was pitched as a streaming, open-world game, which is about the highest level of hubris a student project might hope to achieve. But we managed to pull it off — in large part due to a swath of editor tools and workflows which I developed during pre-production.</p>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!------------------------------------------------------------- PROCEDURAL POLYGONS -->
+        
+        <div class="contained-text">
+          <h2>Procedural Polygons</h2>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!------------------------------------------------------------- OPEN-WORLD EDITING -->
+        
+        <div class="contained-text">
+          <h2>Open-World Editing</h2>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+      </div>
+    </div>
+    
+    <!----------------------------------------------------------------------------->
+    <!------------------------------------------------------------ SHADERS & VFX -->
+    <!----------------------------------------------------------------------------->
+  
+    <hr>
+    <div style="background: linear-gradient(90deg, #EAF4F5 0%, #FFFFFF 10%, #FFFFFF 50%, #2196F3 50%)">
+      <div class="container">
+      
+        <!------------------------------------------------------------- HEADER -->
+        
+        <div class="contained-text">
+          <h1 style="color:#2196F3">SHADERS & VFX</h1>
+          <p>ToBI was filled with opportunities for creative shader work. Text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text.</p>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!------------------------------------------------------------- WATER -->
+        
+        <div class="contained-text">
+          <h2>Water</h2>
+          <p>The water shader is usually the most complicated piece of tech art in all of my games, and ToBI was no exception. ToBI's water is a set of shaders that are responsible for a significant amount of color design and simulation.</p>
+          <p>Making things even more complicated, the open-world nature of the game meant that the same material needed to look convincing and non-repetitive at very different scales — both when the camera was practically rubbing against it, and when viewed from the top of a building several kilometers away.</p>
+          <p>Let's go through the solution step by step!</p>
+        </div>
+        
+        <div class="contained-images">
+          <img src="content/art/imp_near.png">
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!------------------------------------------------------------- WATER . MODELING -->
+         
+        <div class="contained-text">
+          <h3>Modeling</h3>
+          <p>The ocean in ToBI signifies the natural end of the playspace, and was specifically modeled to match up with the various beaches and buildings along that edge. While this required manual work of matching up vertices and shapes, it ended up being necessary for performance (I didn't want a high-impact water plane being rendered underneath everything in the city) and for manually defining where I wanted the most detailed tesselation.</p>
+          <p>Of course, you can also slap the material on a procedural polygon, which was useful for making swimming pools, fountains, aqueducts, and whatever else.</p>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!------------------------------------------------------------- WATER . COLORATION -->
+        
+        <div class="contained-text">
+          <h3>Coloration</h3>
+          <p>Text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text.</p>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!------------------------------------------------------------- WATER . CAUSTICS -->
+        
+        <div class="contained-text">
+          <h3>Caustics</h3>
+          <p>Text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text.</p>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!------------------------------------------------------------- SIMULATION -->
+        
+        <div class="contained-text">
+          <h3>Simulation & Tesselation</h3>
+          <p>Text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text.</p>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!------------------------------------------------------------- LOD -->
+        
+        <div class="contained-text">
+          <h3>Level of Detail</h3>
+          <p>Obviously, nobody has the VRAM to simulate an entire ocean at this kind of resolution, so this is where LOD tricks came into play. After a certain distance, the detailed displacement-and-velocity "near simulation" starts to fade into a much cheaper "far simulation", which is basically just the classic "scroll some scaled normal maps over each other" trick for making water. This is the version of the water you're looking at from the tops of buildings.</p>
+          <p>Interestingly, this also ended up being one of those situations where putting an execution branch in a shader did more good than harm. Evaluating the near simulation is extremely expensive per-pixel, and having the shader completely bypass those lines upon reaching the far LOD made the shader much more performant, given how much distant ocean is usually onscreen.</p>
+          <p>While I'm still proud of what I was able to accomplish with this material, I've found myself wishing I had done more with surface foam and impact particles for objects entering and leaving. That'll be a priority for future games.</p>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!------------------------------------------------------------- EXPLOSIONS -->
+        
+        <div class="contained-text">
+          <h2>Explosions</h2>
+          <p>What kind of 3D adventure game would ToBI be without red, beeping crates that explode? This effect is created by a very specific particle system and a very specific shader working in tandem.</p>
+          <p>For some added fun, Luke's shader also has a "soot damage" float uniform, which gets turned up when this damage type is detected and then decreased over time. Toasty!</p>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!------------------------------------------------------------- USER INTERFACE -->
+        
+        <div class="contained-text">
+          <h2>User Interface</h2>
+          <p>ToBI's art direction is a sun-drenched, graffitipunk take on the <a href="https://www.google.com/search?q=memphis+style&tbm=isch" target="_blank">Memphis Style</a> — kind of like Sunset Overdrive meets 90s Nickelodeon bumpers, but with more pastels. The operating word was "fluid" — when elements from the UI appear and disappear, they get spray-painted onto the screen and fade out in a similar way.</p>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!------------------------------------------------------------- ZAP -->
+         
+        <div class="contained-text">
+          <h2>Zap</h2>
+          <p>One fun effect that ended up going unused was an implementation of the quintessential "x-ray skeleton" effect for Luke getting electrocuted, which was inspired by a similar effect in Super Mario Galaxy.</p>
+          <p>I modeled Luke's skeleton (to.. an extent), made it glow, and also wrote a special shader / material for his body that flips the culling and applies a matcap-style glow. The glow is an addition of two dot products of the camera vector and the normal — a soft glow when they're near-parallel, and a bright glow when they're near-perpendicular.</p>
+          <p>This effect is actually still 100% functional in the final build — Luke's skeleton is always there, lurking — but none of the enemies or hazards in the game ended up using the "Electric" damage type, so it's impossible to trigger. Game development!</p>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+      </div>
+    </div>
+    
+    <!----------------------------------------------------------------------------->
+    <!--------------------------------------------------- CHARACTERS & ANIMATION -->
+    <!----------------------------------------------------------------------------->
+  
+    <hr>
+    <div style="background: linear-gradient(90deg, #EAF4F5 0%, #FFFFFF 10%, #FFFFFF 50%, #FFC107 50%)">
+      <div class="container">
+      
+        <div class="contained-text">
+          <h1 style="color: #FFC107">CHARACTERS & ANIMATION</h1>
+          <p>Blah blah blah</p>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+      </div>
+    </div>
+
+  </body>
+  
+</html>
