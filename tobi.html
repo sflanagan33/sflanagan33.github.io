@@ -141,7 +141,60 @@
         
         <div class="contained-text">
           <h1 style="color:#2196F3">SHADERS & VFX</h1>
-          <p>ToBI was filled with opportunities for creative shader work. Text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text.</p>
+          <p>ToBI was filled with opportunities for creative shader work. At the intersection of math and art design, VFX is one of my favorite areas of game development, and I've broken down how I made some of the most fun effects in the project below.</p>
+        </div>
+        
+        <div class="contained-images">
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!------------------------------------------------------------- EXPLOSIONS -->
+        
+        <div class="contained-text">
+          <h2>Explosions</h2>
+          <p>What kind of 3D platformer would ToBI be without red, beeping crates that blow you up? This explosion prefab consists of three particle systems, a shader, and a realtime light working together.</p>
+          <p>The main body of the effect is a burst of sphere-mesh particles, which are quickly emitted from the explosion center and then drift upwards. These particles have a shader that roils some <a href="https://en.wikipedia.org/wiki/Worley_noise" target="_blank">Worley noise</a> upwards over their mesh, displacing their vertices and emitting bright colors from a gradient palette. The shader also reads from the particles' vertex alpha to make them slowly "cool off" and vanish over time.</p>
+          <p>The explosion is sweetened with two other particle systems: some bouncy trails and floating stars that get emitted from the center.</p>
+          <p>For some added fun, Luke's shader also has a "soot damage" float uniform, which gets cranked up when he gets hit by an explosion. Toasty!</p>
+          <p>You can take a look at all the assets & shader code that go into the explosion effect in the <a href="" target="_blank">ToBI sample repository</a>.</p>
+        </div>
+        
+        <div class="contained-images">
+          <video autoplay muted loop><source src="tobi/explosion.mp4" type="video/mp4"></video>
+          <img style="width:100%; margin-top:-8px" src="tobi/explosion-palette.png">
+          <video autoplay muted loop style="float:left; width:58.4%;"><source src="tobi/explosion-particle.mp4" type="video/mp4"></video>
+          <video autoplay muted loop style="float:left; width:41.6%"><source src="tobi/explosion-soot.mp4" type="video/mp4"></video>
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!------------------------------------------------------------- USER INTERFACE -->
+        
+        <div class="contained-text">
+          <h2>User Interface</h2>
+          <p>ToBI's art direction is a sun-drenched, graffitipunk take on the <a href="https://www.google.com/search?q=memphis+style&tbm=isch" target="_blank">Memphis style</a> — a mashup of Sunset Overdrive, Miami's Art Deco district, and 90s Nickelodeon bumpers.</p>
+          <p>The operating word for the interface was "fluid." When the contextual UI elements appear and disappear, they splatter onto the screen and then evaporate off of it, powered by a shader that scrolls a Memphis-inspired grunge pattern within various graffiti alphas.</p>
+          <p>Strangely enough, my favorite VFX work I did is on the pause & loading screens, where confetti particles gently drift through an implied fluid. On the pause screen, I used the stencil buffer to punch the particles' silhouettes through the central purple band. The background is diagonally wiped in and out with an alpha cutoff.</p>
+        </div>
+        
+        <div class="contained-images">
+          <video autoplay muted loop style="margin-bottom:-8px"><source src="tobi/ui-pause.mp4" type="video/mp4"></video>
+          <img style="width:25%; float:left;" src="tobi/ui-memphis.png">
+          <img style="width:25%; float:left;" src="tobi/ui-splat-1.png">
+          <img style="width:25%; float:left;" src="tobi/ui-splat-2.png">
+          <img style="width:25%; float:left;" src="tobi/ui-palette.png">
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!------------------------------------------------------------- ZAP -->
+         
+        <div class="contained-text">
+          <h2>Zap</h2>
+          <p>One fun effect that ended up going unused was an implementation of the quintessential "x-ray skeleton" for getting electrocuted, which was inspired by similar effects from other cartoony platformers.</p>
+          <p>I modeled Luke's skeleton (to... an extent), made it flicker neon blue with a custom shader, and wrote another for his body that flips the culling and applies a matcap-style glow. The glow is an addition of two dot products of the camera vector and the normal — a soft glow when they're near-parallel, and a bright glow when they're near-perpendicular.</p>
+          <p>This effect is actually still 100% functional in the final build — Luke's skeleton is always there, <i>lurking</i> — but none of the enemies or hazards in the game ended up using the electric damage type, so it's impossible to trigger. Game development!</p>
         </div>
         
         <div class="contained-images">
@@ -199,7 +252,7 @@
         <div class="contained-text">
           <h3>Caustics</h3>
           <p>The next part of the surface shader is a shimmering layer of caustics, which adds a lot to the appeal. Though the caustics look like they're being drawn onto the submerged geometry, they're actually on the surface of the water.</p>
-          <p>Using some wacky projection math, we can reconstruct world space from the depth buffer, figuring out where the submerged geometry is and using its position to project some UV coordinates from the sun.</p>
+          <p>Using some wacky projection math, we can reconstruct world space from the depth buffer, figure out where the submerged geometry is, and use its position to project some UV coordinates from the sun.</p>
           <p>The caustics (which are just two copies of that texture scrolling past each other) are then added to the emission of the water surface.</p>
         </div>
         
@@ -237,45 +290,6 @@
         
         <div class="contained-images">
           <img src="tobi/water-lod.png">
-        </div>
-        
-        <div class="clear"></div>
-        
-        <!------------------------------------------------------------- EXPLOSIONS -->
-        
-        <div class="contained-text">
-          <h2>Explosions</h2>
-          <p>What kind of 3D adventure game would ToBI be without red, beeping crates that explode? This effect is created by a very specific particle system and a very specific shader working in tandem.</p>
-          <p>For some added fun, Luke's shader also has a "soot damage" float uniform, which gets turned up when this damage type is detected and then decreased over time. Toasty!</p>
-        </div>
-        
-        <div class="contained-images">
-        </div>
-        
-        <div class="clear"></div>
-        
-        <!------------------------------------------------------------- USER INTERFACE -->
-        
-        <div class="contained-text">
-          <h2>User Interface</h2>
-          <p>ToBI's art direction is a sun-drenched, graffitipunk take on the <a href="https://www.google.com/search?q=memphis+style&tbm=isch" target="_blank">Memphis Style</a> — kind of like Sunset Overdrive meets 90s Nickelodeon bumpers, but with more pastels. The operating word was "fluid" — when elements from the UI appear and disappear, they get spray-painted onto the screen and fade out in a similar way.</p>
-        </div>
-        
-        <div class="contained-images">
-        </div>
-        
-        <div class="clear"></div>
-        
-        <!------------------------------------------------------------- ZAP -->
-         
-        <div class="contained-text">
-          <h2>Zap</h2>
-          <p>One fun effect that ended up going unused was an implementation of the quintessential "x-ray skeleton" effect for Luke getting electrocuted, which was inspired by a similar effect in Super Mario Galaxy.</p>
-          <p>I modeled Luke's skeleton (to.. an extent), made it glow, and also wrote a special shader / material for his body that flips the culling and applies a matcap-style glow. The glow is an addition of two dot products of the camera vector and the normal — a soft glow when they're near-parallel, and a bright glow when they're near-perpendicular.</p>
-          <p>This effect is actually still 100% functional in the final build — Luke's skeleton is always there, lurking — but none of the enemies or hazards in the game ended up using the "Electric" damage type, so it's impossible to trigger. Game development!</p>
-        </div>
-        
-        <div class="contained-images">
         </div>
         
         <div class="clear"></div>
