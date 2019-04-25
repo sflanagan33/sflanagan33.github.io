@@ -41,8 +41,8 @@
         
     .contained-images {
       width: 50%;
-      padding: 50px;
-      padding-top: 7.25em;
+      padding: 15px;
+      padding-top: 6.5em;
       float: left;
       overflow: hidden;
     }
@@ -51,9 +51,11 @@
       clear: both;
     }
     
-    img {
+    img,video {
       max-width: 100%;
       max-height: 100%;
+      padding: 0px;
+      margin: 0px;
     }
     
   </style>
@@ -151,13 +153,13 @@
         
         <div class="contained-text">
           <h2>Water</h2>
-          <p>The water shader is usually the most complicated piece of tech art in all of my games, and ToBI was no exception. ToBI's water is a set of shaders that are responsible for a significant amount of color design and simulation.</p>
-          <p>Making things even more complicated, the open-world nature of the game meant that the same material needed to look convincing and non-repetitive at very different scales — both when the camera was practically rubbing against it, and when viewed from the top of a building several kilometers away.</p>
+          <p>Water is usually the most complicated bit of tech art in every game I make, and this time was no different. The water in ToBI consists of a surface shader, a simulation shader, six textures, and a single water material that brings all of them together.</p>
+          <p>Making things even more complicated, the open-world design of the game requires the water material to look convincing and non-repetitive at very different scales — both when the camera is practically on top of it, and when viewing it from a rooftop several kilometers away.</p>
           <p>Let's go through the solution step by step!</p>
         </div>
         
         <div class="contained-images">
-          <img src="content/art/imp_near.png">
+          <video autoplay muted loop><source src="tobi/water.mp4" type="video/mp4"></video>
         </div>
         
         <div class="clear"></div>
@@ -166,11 +168,12 @@
          
         <div class="contained-text">
           <h3>Modeling</h3>
-          <p>The ocean in ToBI signifies the natural end of the playspace, and was specifically modeled to match up with the various beaches and buildings along that edge. While this required manual work of matching up vertices and shapes, it ended up being necessary for performance (I didn't want a high-impact water plane being rendered underneath everything in the city) and for manually defining where I wanted the most detailed tesselation.</p>
-          <p>Of course, you can also slap the material on a procedural polygon, which was useful for making swimming pools, fountains, aqueducts, and whatever else.</p>
+          <p>First off, we need something to apply the water material to. The ocean in ToBI is the  boundary of the playspace, and was specifically modeled to line up with the various beaches and outcrops of Beryl Isle. While this was manual work, it ended up being necessary for performance reasons (I didn't want an expensive water plane being rendered underneath everything in the city) and also gave me fine-grained control over the poly density.</p>
+          <p>Of course, you can also slap the same water material on a procedural polygon, which was useful for making swimming pools, fountains, aqueducts, and whatever else.</p>
         </div>
         
         <div class="contained-images">
+          <img src="tobi/water-model.png">
         </div>
         
         <div class="clear"></div>
@@ -179,10 +182,14 @@
         
         <div class="contained-text">
           <h3>Coloration</h3>
-          <p>Text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text.</p>
+          <p>The water surface shader does a lot, but the very first part of the look is its coloration gradient. Using <a href="https://docs.unity3d.com/Manual/SL-GrabPass.html" target="_blank">GrabPass</a>, the surface shader nabs the prior contents of the screen, figures out how close each pixel is to the water surface with a depth buffer comparison, and then recolors each pixel with a gradient sample. The shader also lets you configure how deep the gradient penetrates into the water (see right.)</p>
+          <p>To get a richer, more consistent palette, everything underwater is turned grayscale before being multiplied with its new water color.</p>
+          <p>If the water is extremely shallow, some bright white "foam" is also brought into the albedo, which makes for a nice edge highlight.</p>
         </div>
         
         <div class="contained-images">
+          <img src="tobi/water-palette.png" style="width:100%;"><p></p>
+          <video autoplay muted loop><source src="tobi/water-palette.mp4" type="video/mp4"></video>
         </div>
         
         <div class="clear"></div>
@@ -191,10 +198,14 @@
         
         <div class="contained-text">
           <h3>Caustics</h3>
-          <p>Text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text.</p>
+          <p>The next part of the surface shader is a shimmering layer of caustics, which adds a lot to the appeal. Though the caustics look like they're being drawn onto the submerged geometry, they're actually on the surface of the water.</p>
+          <p>Using some wacky projection math, we can reconstruct world space from the depth buffer, figuring out where the submerged geometry is and using its position to project some UV coordinates from the sun.</p>
+          <p>The caustics (which are just two copies of that texture scrolling past each other) are then added to the emission of the water surface.</p>
         </div>
         
         <div class="contained-images">
+          <video style="float: left; width:43.75%" autoplay muted loop><source src="tobi/water-caustics.mp4" type="video/mp4"></video>
+          <img style="float: left; width:56.25%" src="tobi/water-caustics.png">
         </div>
         
         <div class="clear"></div>
@@ -203,10 +214,15 @@
         
         <div class="contained-text">
           <h3>Simulation & Tesselation</h3>
-          <p>Text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text.</p>
+          <p>ToBI's water is also a dynamic local simulation — when Luke moves or swims around in any body of water, he realistically displaces its surface.</p>
+          <p>This is where that simulation shader comes in. At all times, a 256x256 texture is sitting in memory as the "water simulation buffer", with its red channel representing surface displacement and its green channel representing surface velocity (see in-game comparison at right.)</p>
+          <p>When Luke moves around, a script tells the simulation shader to write some negative velocity at his current position (the texture is mapped in world space.) The shader then runs the "simulation tick", where a little bit of ambient velocity is applied from a scrolling texture, and all velocities get propagated to adjacent pixels using Hooke's law.</p>
+          <p>Finally, the surface shader reads from that buffer to displace its vertices, adjust its normals, and refract what it's pulling from the GrabPass. It also uses <a href="https://docs.unity3d.com/Manual/SL-SurfaceShaderTessellation.html" target="_blank">Unity's edge-length tesselation</a> to get a respectable poly density for close-up viewing.</p>
+          <p>As far as I can tell, this is the same general technique used to simulate all of the fluid and local fog in <em>Super Mario Odyssey</em>.</p>
         </div>
         
         <div class="contained-images">
+          <video autoplay muted loop><source src="tobi/water-simulation.mp4" type="video/mp4"></video>
         </div>
         
         <div class="clear"></div>
@@ -215,12 +231,12 @@
         
         <div class="contained-text">
           <h3>Level of Detail</h3>
-          <p>Obviously, nobody has the VRAM to simulate an entire ocean at this kind of resolution, so this is where LOD tricks came into play. After a certain distance, the detailed displacement-and-velocity "near simulation" starts to fade into a much cheaper "far simulation", which is basically just the classic "scroll some scaled normal maps over each other" trick for making water. This is the version of the water you're looking at from the tops of buildings.</p>
-          <p>Interestingly, this also ended up being one of those situations where putting an execution branch in a shader did more good than harm. Evaluating the near simulation is extremely expensive per-pixel, and having the shader completely bypass those lines upon reaching the far LOD made the shader much more performant, given how much distant ocean is usually onscreen.</p>
-          <p>While I'm still proud of what I was able to accomplish with this material, I've found myself wishing I had done more with surface foam and impact particles for objects entering and leaving. That'll be a priority for future games.</p>
+          <p>Obviously, nobody has the VRAM to simulate an entire ocean like that, so this is where LOD tricks come into play. After a certain distance, the detailed displacement-and-velocity "near simulation" starts to fade into a much simpler "far simulation", which is basically just the classic "scroll some normal maps over each other" trick for making cheap water. This is the version of the water you're looking at from the tops of buildings.</p>
+          <p>This also ended up being one of those situations where putting an execution branch in a shader was worth it. Computing the normals for the near simulation is extremely expensive per-pixel, and having the surface shader completely bypass those lines upon reaching the far LOD made it much more performant, given how much distant ocean is usually onscreen.</p>
         </div>
         
         <div class="contained-images">
+          <img src="tobi/water-lod.png">
         </div>
         
         <div class="clear"></div>
