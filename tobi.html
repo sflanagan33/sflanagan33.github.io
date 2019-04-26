@@ -73,7 +73,7 @@
           <br><br><br><br><h2>the tech & effects behind</h2>
           <h1 style="font-size:80px; color:#E91E63;">TROUBLE ON BERYL ISLE</h1>
           <br>
-          <p>Hey! If you're here, you're probably wondering what kind of work I put into making this project happen. Text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text.</p>
+          <p>Hey! </p>
         </div>
         
         <div class="contained-images">
@@ -96,7 +96,7 @@
         
         <div class="contained-text">
           <h1 style="color:#E91E63;">EDITOR TOOLS</h1>
-          <p>Trouble on Beryl Isle was pitched as a streaming, open-world 3D adventure game, which is about the highest level of hubris a student game project might strive for. But thanks to a set of editor tools and workflows I developed during pre-production (along with a <i>lot</i> of dedication from everyone on the content side of things) we were able to pull off something remarkably close to that original concept.</p>
+          <p>Trouble on Beryl Isle was pitched as a streaming, open-world adventure game, which is about the highest form of hubris a student game project might be capable of. But thanks to a set of editor tools and workflows I developed during pre-production (along with a <i>lot</i> of dedication from everyone on the content side of things) we were able to pull off something remarkably close to that original concept.</p>
         </div>
         
         <div class="contained-images">
@@ -108,14 +108,17 @@
         
         <div class="contained-text">
           <h2>Procedural Polygons</h2>
-          <p>So — how do you make a game that takes place in a city without a dedicated team of modelers? From the beginning, it seemed obvious to me that the scale I was imagining for Beryl Isle would preclude us from modeling everything in it by hand. Instead, I wanted to develop an editor tool that would let us build convincingly-artpassed geometry directly inside the Unity editor.</p>
+          <p>So — how do you make a game that takes place in a city without a big team of environment artists? From the beginning, it seemed obvious that the scale I was imagining for Beryl Isle would preclude us from modeling everything by hand. Instead, I wanted to develop an editor tool that would let us build convincingly-artpassed geometry directly inside the Unity editor.</p>
           <p>Enter the <b>procedural polygon</b>, the geometry blocking tool that made the game possible. By dragging around some points and applying a style, a simple 2D shape can become anything your heart desires.</p>
-          <p>Said in a less cutesy tone, this is a procedural mesh generator that was used to make 99% of the game's geometry. Conceptually, it's like the lathe or spin tool in most modeling programs. A polygon "style" is a marked-up edge silhouette that defines any angles or bevels on the polygon, and assigns which materials are used where. The generation algorithm takes that silhouette, extrudes it along the given points, and optionally closes off the top and bottom for you.</p>
+          <p>Said in a less cutesy tone, this is a procedural mesh generator that was used to make 99% of the game's geometry. Conceptually, it's like the lathe or spin tool in most modeling programs. A polygon "style" is a marked-up edge silhouette that defines any angles or bevels on the polygon, and assigns which materials are used where. The generation algorithm takes that silhouette, extrudes it around the given 2D shape, and optionally closes off the top and bottom for you.</p>
           <p>I made 21 polygon styles in total, for various surface needs like grass, Spanish tile, brick, metal siding, and glass. The actual materials and textures used on the styles I created with Substance Designer.</p>
           <p>I found out later that this is more or less the same workflow that Insomniac Games used to make the buildings in <i>Spider-Man</i> — a polyline tool that lets you define the core shapes of buildings, and then modularly beautifies them for you with predefined bevels and textures.</p>
         </div>
         
         <div class="contained-images">
+          <video autoplay muted loop><source src="tobi/procedural-polygon.mp4" type="video/mp4"></video>
+          <video autoplay muted loop style="margin-top:-8px"><source src="tobi/procedural-polygon-2.mp4" type="video/mp4"></video>
+          <img src="tobi/procedural-materials.png" style="width: 100%; margin-top:-8px">
         </div>
         
         <div class="clear"></div>
@@ -124,6 +127,7 @@
         
         <div class="contained-text">
           <h2>Open-World Editing</h2>
+          <p>Having a quick way to make buildings is good, but that's only half of the problem.</p>
         </div>
         
         <div class="contained-images">
@@ -368,8 +372,7 @@
         </div>
         
         <div class="clear"></div>
-        
-        <div style="height:200px"></div>
+        <br><br><br><br>
         
       </div>
     </div>
