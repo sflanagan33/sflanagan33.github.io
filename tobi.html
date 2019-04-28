@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   
-  <title>ToBI Breakdown</title>
+  <title>The Tech & Effects Behind ToBI</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -25,6 +25,11 @@
       border-color: #E1ECF3;
       padding: 0px;
       margin: 0px;
+    }
+    
+    .small {
+      color: #FFFFFF;
+      font-size: 13px;
     }
     
     .container {
@@ -73,10 +78,13 @@
           <br><br><br><br><h2>the tech & effects behind</h2>
           <h1 style="font-size:80px; color:#E91E63;">TROUBLE ON BERYL ISLE</h1>
           <br>
-          <p>Hey! </p>
+          <p>Hey! If you're reading this, you might be a fellow gamedev wondering what I did to make this project possible. It's great to meet you!</p>
+          <p>This article is a detailed breakdown of the tools, systems, characters, and effects  I did for ToBI over a year of development — from doodling on notebook paper to presenting the game at DreamHack Atlanta.</p>
+          <p>I've linked to code samples and assets throughout, but if you're curious about anything in the game I don't cover here, feel free to <a href="mailto:sflanagan33@gatech.edu?subject=Inquiry">contact me</a>!</p>
         </div>
-        
+
         <div class="contained-images">
+          <img src="tobi/hero.png" style="width: 100%;">
         </div>
         
         <div class="clear"></div>
@@ -96,7 +104,7 @@
         
         <div class="contained-text">
           <h1 style="color:#E91E63;">EDITOR TOOLS</h1>
-          <p>Trouble on Beryl Isle was pitched as a streaming, open-world adventure game, which is about the highest form of hubris a student game project might be capable of. But thanks to a set of editor tools and workflows I developed during pre-production (along with a <i>lot</i> of dedication from everyone on the content side of things) we were able to pull off something remarkably close to that original concept.</p>
+          <p>I pitched Trouble on Beryl Isle as a streaming, open-world adventure, which is about the highest form of hubris a student game project might be capable of. But thanks to a set of editor tools and workflows I developed during pre-production (along with a <i>lot</i> of dedication from everyone on the content side of things) we were able to pull off something remarkably close to that original concept.</p>
         </div>
         
         <div class="contained-images">
@@ -108,11 +116,12 @@
         
         <div class="contained-text">
           <h2>Procedural Polygons</h2>
-          <p>So — how do you make a game that takes place in a city without a big team of environment artists? From the beginning, it seemed obvious that the scale I was imagining for Beryl Isle would preclude us from modeling everything by hand. Instead, I wanted to develop an editor tool that would let us build convincingly-artpassed geometry directly inside the Unity editor.</p>
+          <p>So — how do you make a game that takes place in a city without a big team of environment artists? From the beginning, it seemed obvious that the scale I was imagining for Beryl Isle would preclude us from modeling everything by hand. Instead, I wanted to develop a tool that would let us build convincingly-artpassed geometry directly inside the Unity editor.</p>
           <p>Enter the <b>procedural polygon</b>, the geometry blocking tool that made the game possible. By dragging around some points and applying a style, a simple 2D shape can become anything your heart desires.</p>
           <p>Said in a less cutesy tone, this is a procedural mesh generator that was used to make 99% of the game's geometry. Conceptually, it's like the lathe or spin tool in most modeling programs. A polygon "style" is a marked-up edge silhouette that defines any angles or bevels on the polygon, and assigns which materials are used where. The generation algorithm takes that silhouette, extrudes it around the given 2D shape, and optionally closes off the top and bottom for you.</p>
           <p>I made 21 polygon styles in total, for various surface needs like grass, Spanish tile, brick, metal siding, and glass. The actual materials and textures used on the styles I created with Substance Designer.</p>
           <p>I found out later that this is more or less the same workflow that Insomniac Games used to make the buildings in <i>Spider-Man</i> — a polyline tool that lets you define the core shapes of buildings, and then modularly beautifies them for you with predefined bevels and textures.</p>
+          <p>You can check out the complete source code for the tool in the <a href="" target="_blank">ToBI sample repository</a>. One of the other programmers on the team also extended the tool with the ability to mirror and scale shapes.</p>
         </div>
         
         <div class="contained-images">
@@ -127,10 +136,18 @@
         
         <div class="contained-text">
           <h2>Open-World Editing</h2>
-          <p>Having a quick way to make buildings is good, but that's only half of the problem.</p>
+          <p>Having a quick way to make buildings is good, but that's only half of the problem. Since Beryl Isle is one large, contiguous playspace, I needed a way to split it up into smaller chunks — both for performance reasons, and to allow the team to build freely without fear of merge conflicts.</p>
+          <p>The solution was another editor workflow, which takes advantage of Unity's additive scene loading. All of the scenes saved within a specific asset folder are called <b>world areas</b>, each containing a human-intuitive portion of Beryl Isle (usually, a building or group of buildings designed by one person.)</p>
+          <p>Whenever one of these scenes is saved in the Unity editor, my scripts automatically generate a corresponding <b>world area prefab</b>, with a LOD model of the scene geometry and a loading zone surrounding it. All of these prefabs are then placed in the Beryl Isle base scene, which houses everything common to the island (lighting, ambience, skybox, etc.) As you run around in that base scene, the prefabs check where you are and additively load / unload their corresponding scenes.</p>
+          <p>This workflow also meshed really well with the procedural polygon tool: since most of the geometry in the game is procedurally generated, these scripts can automatically make accurate scene LODs by running that same code with the settings turned all the way down.</p>
+          <p>Overall, I'm happy with how this workflow came out — it made everything from large-scale collaboration to small scene fixes very painless throughout development. If I were to iterate on it more, I'd move away from using axis-aligned bounding boxes as loading zones, since they didn't always intuitively capture the extent of an area.</p>
+          <p>You can check out the editor scripts behind all of this in the <a href="" target="_blank">ToBI sample repository</a>.</p>
         </div>
         
-        <div class="contained-images">
+        <div class="contained-images" style="text-align: center">
+          <video autoplay muted loop><source src="tobi/open-world.mp4" type="video/mp4"></video>
+          <video autoplay muted loop style="margin-top:-8px"><source src="tobi/open-world.mp4" type="video/mp4"></video>
+          <p class="small">click on prefab → open scene → make changes → save / close scene → prefab updates!</p>
         </div>
         
         <div class="clear"></div>
@@ -150,7 +167,7 @@
         
         <div class="contained-text">
           <h1 style="color: #FFC107">CHARACTERS & ANIMATION</h1>
-          <p>One of my personal goals on ToBI was to design and implement a fully hand-animated main character, which I hadn't done before this project.</p>
+          <p>One of my personal goals on ToBI was to design and implement a fully hand-animated main character, which I hadn't done before this project. That goal took the form of Luke the Wolf, a modern take on a retro mascot character with a fluid, fun moveset.</p>
         </div>
         
         <div class="contained-images">
@@ -163,6 +180,7 @@
         <div class="contained-text">
           <h2>Hierarchical States</h2>
           <p>Text text text.</p>
+          <p>The other members of my team used this same system to implement their own characters and enemies — a football ram, an exploding frog, an alien saucer, a flamingo, and even the cars that drive around the island.</p>
         </div>
         
         <div class="contained-images">
@@ -249,7 +267,7 @@
         <div class="contained-text">
           <h2>Zap</h2>
           <p>One fun effect that ended up going unused was an implementation of the quintessential "x-ray skeleton" for getting electrocuted, which was inspired by similar effects from other cartoony platformers.</p>
-          <p>I modeled Luke's skeleton (to... an extent), made it flicker neon blue with a custom shader, and wrote another for his body that flips the culling and applies a matcap-style glow. A particle system draws a randomized ribbon of electricity arcing over his mesh.</p>
+          <p>I modeled Luke's skeleton (to... an extent), made it flicker neon blue with a custom shader, and wrote another for his body that flips the culling and applies a matcap-style glow. A particle system draws a randomized ribbon of electricity arcing over him.</p>
           <p>This effect is actually still 100% functional in the final build — Luke's skeleton is always there, <i>lurking</i> — but none of the enemies or hazards in the game ended up using the electric damage type, so it's impossible to trigger. Game development!</p>
         </div>
         
@@ -343,6 +361,7 @@
           <p>Obviously, nobody has the VRAM to simulate an entire ocean like that, so this is where LOD tricks come into play. After a certain distance, the detailed displacement-and-velocity "near simulation" starts to fade into a much simpler "far simulation", which is basically just the classic "scroll some normal maps over each other" trick for making cheap water. This is the version of the water you're looking at from the tops of buildings.</p>
           <p>This also ended up being one of those situations where putting an execution branch in a shader was worth it. Computing the normals for the near simulation is extremely expensive per-pixel, and having the surface shader completely bypass those lines upon reaching the far LOD made it much more performant, given how much distant ocean is usually onscreen.</p>
           <p>While overall I'm really happy with how the water in ToBI turned out, in future games I'd like to focus more on doing surface foam and impact particles to really sell the water interacting with objects.</p>
+          <p>You can check out all the assets & code that go into the effect in the <a href="" target="_blank">ToBI sample repository</a>.</p>
         </div>
         
         <div class="contained-images">
