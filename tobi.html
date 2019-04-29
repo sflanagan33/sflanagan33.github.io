@@ -121,7 +121,7 @@
           <p>Said in a less cutesy tone, this is a procedural mesh generator that was used to make 99% of the game's geometry. Conceptually, it's like the lathe or spin tool in most modeling programs. A polygon "style" is a marked-up edge silhouette that defines any angles or bevels on the polygon, and assigns which materials are used where. The generation algorithm takes that silhouette, extrudes it around the given 2D shape, and optionally closes off the top and bottom for you.</p>
           <p>I made 21 polygon styles in total, for various surface needs like grass, Spanish tile, brick, metal siding, and glass. The actual materials and textures used on the styles I created with Substance Designer.</p>
           <p>I found out later that this is more or less the same workflow that Insomniac Games used to make the buildings in <i>Spider-Man</i> — a polyline tool that lets you define the core shapes of buildings, and then modularly beautifies them for you with predefined bevels and textures.</p>
-          <p>You can check out the complete source code for the tool in the <a href="" target="_blank">ToBI sample repository</a>. One of the other programmers on the team also extended the tool with the ability to mirror and scale shapes.</p>
+          <p>You can check out the complete source code for the tool in the <a href="https://github.com/sflanagan33/ToBI-Samples/tree/master/Procedural" target="_blank">ToBI sample repository</a>. One of the other programmers on the team also extended the tool with the ability to mirror and scale shapes.</p>
         </div>
         
         <div class="contained-images">
@@ -141,12 +141,12 @@
           <p>Whenever one of these scenes is saved in the Unity editor, my scripts automatically generate a corresponding <b>world area prefab</b>, with a LOD model of the scene geometry and a loading zone surrounding it. All of these prefabs are then placed in the Beryl Isle base scene, which houses everything common to the island (lighting, ambience, skybox, etc.) As you run around in that base scene, the prefabs check where you are and additively load / unload their corresponding scenes.</p>
           <p>This workflow also meshed really well with the procedural polygon tool: since most of the geometry in the game is procedurally generated, these scripts can automatically make accurate scene LODs by running that same code with the settings turned all the way down.</p>
           <p>Overall, I'm happy with how this workflow came out — it made everything from large-scale collaboration to small scene fixes very painless throughout development. If I were to iterate on it more, I'd move away from using axis-aligned bounding boxes as loading zones, since they didn't always intuitively capture the extent of an area.</p>
-          <p>You can check out the editor scripts behind all of this in the <a href="" target="_blank">ToBI sample repository</a>.</p>
+          <p>You can check out the editor scripts behind all of this in the <a href="https://github.com/sflanagan33/ToBI-Samples/tree/master/World" target="_blank">ToBI sample repository</a>.</p>
         </div>
         
         <div class="contained-images" style="text-align: center">
           <video autoplay muted loop><source src="tobi/open-world.mp4" type="video/mp4"></video>
-          <video autoplay muted loop style="margin-top:-8px"><source src="tobi/open-world.mp4" type="video/mp4"></video>
+          <video autoplay muted loop style="margin-top:-8px"><source src="tobi/open-world-2.mp4" type="video/mp4"></video>
           <p class="small">click on prefab → open scene → make changes → save / close scene → prefab updates!</p>
         </div>
         
@@ -231,7 +231,7 @@
           <p>The main body of the effect is a burst of sphere-mesh particles, which are quickly emitted from the explosion center and then drift upwards. These particles have a shader that rolls some <a href="https://en.wikipedia.org/wiki/Worley_noise" target="_blank">Worley noise</a> up their mesh, displacing their vertices and emitting HDR colors from a gradient sample. The shader also reads from the particles' vertex alpha to make them slowly "cool off" and vanish over time.</p>
           <p>The explosion is sweetened with two other particle systems: some bouncy trails and floating stars that get emitted from the center.</p>
           <p>For some added fun, Luke's shader also has a "soot damage" float uniform, which gets cranked up when he gets hit by an explosion. Toasty!</p>
-          <p>You can take a look at all the assets & shader code that go into the explosion effect in the <a href="" target="_blank">ToBI sample repository</a>.</p>
+          <p>You can check out the assets that go into the effect in the <a href="https://github.com/sflanagan33/ToBI-Samples/tree/master/Explosion" target="_blank">ToBI sample repository</a>.</p>
         </div>
         
         <div class="contained-images">
@@ -272,6 +272,7 @@
         </div>
         
         <div class="contained-images">
+          <video autoplay muted loop><source src="tobi/zap.mp4" type="video/mp4"></video>
         </div>
         
         <div class="clear"></div>
@@ -361,7 +362,7 @@
           <p>Obviously, nobody has the VRAM to simulate an entire ocean like that, so this is where LOD tricks come into play. After a certain distance, the detailed displacement-and-velocity "near simulation" starts to fade into a much simpler "far simulation", which is basically just the classic "scroll some normal maps over each other" trick for making cheap water. This is the version of the water you're looking at from the tops of buildings.</p>
           <p>This also ended up being one of those situations where putting an execution branch in a shader was worth it. Computing the normals for the near simulation is extremely expensive per-pixel, and having the surface shader completely bypass those lines upon reaching the far LOD made it much more performant, given how much distant ocean is usually onscreen.</p>
           <p>While overall I'm really happy with how the water in ToBI turned out, in future games I'd like to focus more on doing surface foam and impact particles to really sell the water interacting with objects.</p>
-          <p>You can check out all the assets & code that go into the effect in the <a href="" target="_blank">ToBI sample repository</a>.</p>
+          <p>You can check out the assets and shaders that go into the effect in the <a href="https://github.com/sflanagan33/ToBI-Samples/tree/master/Water" target="_blank">ToBI sample repository</a>.</p>
         </div>
         
         <div class="contained-images">
