@@ -63,10 +63,30 @@
       margin: 0px;
     }
     
+    .back {
+      position: fixed;
+      left: 20px;
+      top: 20px;
+      font-size: 30px;
+      color: #000000;
+    }
+    
+    .back:hover {
+      color: #E91E63;
+    }
+    
   </style>
   
   <body>
   
+    <!----------------------------------------------------------------------------->
+    <!--------------------------------------------------------------------- HERO -->
+    <!----------------------------------------------------------------------------->
+    
+    <a href="http://sflanagan33.github.io/#trouble-on-beryl-isle">
+      <i class="fa fa-arrow-left back"></i>
+    </a>
+    
     <!----------------------------------------------------------------------------->
     <!--------------------------------------------------------------------- HERO -->
     <!----------------------------------------------------------------------------->
@@ -116,7 +136,7 @@
         
         <div class="contained-text">
           <h2>Procedural Polygons</h2>
-          <p>So — how do you make a game that takes place in a city without a big team of environment artists? From the beginning, it seemed obvious that the scale I was imagining for Beryl Isle would preclude us from modeling everything by hand. Instead, I wanted to develop a tool that would let us build convincingly-artpassed geometry directly inside the Unity editor.</p>
+          <p>So — how do you make a game that takes place in a city without a big team of environment artists? From the beginning, it seemed obvious that the scale I was imagining for Beryl Isle would prevent us from modeling everything by hand. Instead, I wanted to develop a tool that would let us build convincingly-artpassed geometry directly inside the Unity editor.</p>
           <p>Enter the <b>procedural polygon</b>, the geometry blocking tool that made the game possible. By dragging around some points and applying a style, a simple 2D shape can become anything your heart desires.</p>
           <p>Said in a less cutesy tone, this is a procedural mesh generator that was used to make 99% of the game's geometry. Conceptually, it's like the lathe or spin tool in most modeling programs. A polygon "style" is a marked-up edge silhouette that defines any angles or bevels on the polygon, and assigns which materials are used where. The generation algorithm takes that silhouette, extrudes it around the given 2D shape, and optionally closes off the top and bottom for you.</p>
           <p>I made 21 polygon styles in total, for various surface needs like grass, Spanish tile, brick, metal siding, and glass. The actual materials and textures used on the styles I created with Substance Designer.</p>
@@ -138,9 +158,9 @@
           <h2>Open-World Editing</h2>
           <p>Having a quick way to make buildings is good, but that's only half of the problem. Since Beryl Isle is one large, contiguous playspace, I needed a way to split it up into smaller chunks — both for performance reasons, and to allow the team to build freely without fear of merge conflicts.</p>
           <p>The solution was another editor workflow, which takes advantage of Unity's additive scene loading. All of the scenes saved within a specific asset folder are called <b>world areas</b>, each containing a human-intuitive portion of Beryl Isle (usually, a building or group of buildings designed by one person.)</p>
-          <p>Whenever one of these scenes is saved in the Unity editor, my scripts automatically generate a corresponding <b>world area prefab</b>, with a LOD model of the scene geometry and a loading zone surrounding it. All of these prefabs are then placed in the Beryl Isle base scene, which houses everything common to the island (lighting, ambience, skybox, etc.) As you run around in that base scene, the prefabs check where you are and additively load / unload their corresponding scenes.</p>
+          <p>Whenever one of these scenes is saved in the Unity editor, my scripts automatically generate a corresponding <b>world area prefab</b>, with a LOD model of the scene geometry and a loading zone surrounding it. All of these area prefabs are then placed in the Beryl Isle base scene, which houses everything common to the island (lighting, ambience, sky, etc.) As you run around in that base scene, the prefabs check where you are and additively load / unload their corresponding scenes.</p>
           <p>This workflow also meshed really well with the procedural polygon tool: since most of the geometry in the game is procedurally generated, these scripts can automatically make accurate scene LODs by running that same code with the settings turned all the way down.</p>
-          <p>Overall, I'm happy with how this workflow came out — it made everything from large-scale collaboration to small scene fixes very painless throughout development. If I were to iterate on it more, I'd move away from using axis-aligned bounding boxes as loading zones, since they didn't always intuitively capture the extent of an area.</p>
+          <p>Overall, I'm happy with how this workflow came out — it made everything from large-scale collaboration to small scene fixes very painless throughout development. If I were to iterate on it more, I'd move away from using axis-aligned bounding boxes as loading zones, since they didn't always intuitively capture the extent of a world area.</p>
           <p>You can check out the editor scripts behind all of this in the <a href="https://github.com/sflanagan33/ToBI-Samples/tree/master/World" target="_blank">ToBI sample repository</a>.</p>
         </div>
         
@@ -167,7 +187,8 @@
         
         <div class="contained-text">
           <h1 style="color: #FFC107">CHARACTERS & ANIMATION</h1>
-          <p>One of my personal goals on ToBI was to design and implement a fully hand-animated main character, which I hadn't done before this project. That goal took the form of Luke the Wolf, a modern take on a retro mascot character with a fluid, fun moveset.</p>
+          <p>One of my personal goals on ToBI was to create a fully hand-animated 3D character in Unity, which I hadn't done in any of my projects before. Since the cornerstone of any 3D platformer is the main character's moveset, a big part of my pre-production effort went into creating Luke the Wolf and figuring out how I wanted him to control.</p>
+          <p>I also wanted the rest of the team to be able to design their own fun characters and enemies, so I built Luke on top of a custom, generic character state machine system, which saw a huge amount of use during development.</p>
         </div>
         
         <div class="contained-images">
@@ -175,24 +196,34 @@
         
         <div class="clear"></div>
         
-        <!------------------------------------------------------------- STATES -->
+        <!------------------------------------------------------------- LUKE & BOYD -->
          
         <div class="contained-text">
-          <h2>Hierarchical States</h2>
-          <p>Text text text.</p>
-          <p>The other members of my team used this same system to implement their own characters and enemies — a football ram, an exploding frog, an alien saucer, a flamingo, and even the cars that drive around the island.</p>
+          <h2>Luke & Boyd</h2>
+          <p>I was solely responsible for two characters — the protagonist, Luke, and a parrot enemy named Boyd who flies around and tries to slap you. I used Blender to model, rig, and animate both of them, and created their textures in Photoshop and Substance Painter.</p>
+          <p>Between them, they have around 50 animation clips (mostly for all of Luke's moves) adding up to about a minute of hand-keyed animation. Given the tone of the game, I had a great time getting really wacky with exaggeration and squash-and-stretch.</p>
+          <p>Both characters also have some subtle touches of procedural animation, which helps them feel more lively and responsive. Boyd's tail is animated entirely in code as a springy chain of masses.</p>
+          <p>Luke has an additive "lean blend" which makes him quickly tilt / look to face the player's input direction. His pupils are on a render texture, so they can track motion or swirl around when he gets hurt. His ears, cap brim, and pant strings all use Unity's cloth component to simulate some floppy secondary action.</p>
+          <p>On top of the hand-animated squash-and-stretch, I also programmed in a procedural way to jiggle Luke's scale — useful for game feel when a collectible flies into him, etc. When his rigidbody collides with the world, the accelerations involved are also routed into the procedural jiggling.</p>
         </div>
         
         <div class="contained-images">
+          <video autoplay muted loop style="width:50%; float:left;"><source src="tobi/luke.mp4" type="video/mp4"></video>
+          <video autoplay muted loop style="width:50%; float:left;"><source src="tobi/boyd.mp4" type="video/mp4"></video>
+          <video autoplay muted loop style="width:33.33%; float:left;"><source src="tobi/luke-eyes.mp4" type="video/mp4"></video>
+          <video autoplay muted loop style="width:33.33%; float:left;"><source src="tobi/luke-eyes.mp4" type="video/mp4"></video>
+          <video autoplay muted loop style="width:33.33%; float:left;"><source src="tobi/luke-squash.mp4" type="video/mp4"></video>
         </div>
         
         <div class="clear"></div>
         
-        <!------------------------------------------------------------- PROCEDURAL ANIMATION -->
+        <!------------------------------------------------------------- Character System -->
          
         <div class="contained-text">
-          <h2>Procedural Animation</h2>
+          <h2>Character System</h2>
           <p>Text text text.</p>
+          <p>The other members of my team used this same system to implement their own characters and enemies — a football ram, an exploding frog, an alien saucer, a flamingo, and even the cars driving around.</p>
+          <p>You can check out the core character scripts and an example implementation in the <a href="" target="_blank">ToBI sample repository</a>.</p>
         </div>
         
         <div class="contained-images">
@@ -248,7 +279,7 @@
         <div class="contained-text">
           <h2>User Interface</h2>
           <p>ToBI's art direction is a sun-drenched, graffitipunk take on the <a href="https://www.google.com/search?q=memphis+style&tbm=isch" target="_blank">Memphis style</a> — a mashup of Sunset Overdrive, Miami's Art Deco district, and 90s Nickelodeon bumpers.</p>
-          <p>The operating word for the interface was "fluid." When UI elements appear and disappear, they splatter onto the screen and evaporate off of it, powered by a shader that slowly scrolls a Memphis-inspired grunge pattern within various graffiti alphas.</p>
+          <p>The operating word for the interface was "fluid." When UI elements appear and disappear, they splatter onto the screen and evaporate off of it, powered by a shader I wrote that scrolls a Memphis-inspired grunge pattern within various graffiti alphas.</p>
           <p>Strangely enough, my favorite VFX work I did in the game was for the pause & loading screens, where confetti particles gently drift through an implied fluid. On the pause screen, I used the stencil buffer to punch the particles' silhouettes through the central ribbon. The background is diagonally wiped in and out with an alpha cutoff.</p>
         </div>
         
@@ -345,7 +376,7 @@
           <p>ToBI's water is also a dynamic local simulation — when Luke moves or swims around in any body of water, he realistically displaces its surface.</p>
           <p>This is where that simulation shader comes in. At all times, a 256x256 texture is sitting in memory as the "water simulation buffer", with its red channel representing surface displacement and its green channel representing surface velocity (see in-game comparison at right.)</p>
           <p>When Luke moves around, a script tells the simulation shader to write some negative velocity at his current position (the texture is mapped in world space.) The shader then runs the "simulation tick", where a little bit of ambient velocity is applied from a scrolling texture, and all velocities get propagated to adjacent pixels using Hooke's law.</p>
-          <p>Finally, the surface shader reads from that buffer to displace its vertices, adjust its normals, and refract what it's pulling from the GrabPass. It also uses <a href="https://docs.unity3d.com/Manual/SL-SurfaceShaderTessellation.html" target="_blank">Unity's edge-length tesselation</a> to get a respectable poly density for close-up viewing.</p>
+          <p>Finally, the surface shader reads from that buffer to displace its vertices, adjust its normals, and refract what it's pulling from the GrabPass. It also uses Unity's <a href="https://docs.unity3d.com/Manual/SL-SurfaceShaderTessellation.html" target="_blank">edge-length tesselation</a> to get a respectable poly density for close-up viewing.</p>
           <p>As far as I can tell, this is the same general technique used to simulate all of the fluid and local fog in <em>Super Mario Odyssey</em>.</p>
         </div>
         
