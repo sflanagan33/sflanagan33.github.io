@@ -160,7 +160,7 @@
           <p>The solution was another editor workflow, which takes advantage of Unity's additive scene loading. All of the scenes saved within a specific asset folder are called <b>world areas</b>, each containing a human-intuitive portion of Beryl Isle (usually, a building or group of buildings designed by one person.)</p>
           <p>Whenever one of these scenes is saved in the Unity editor, my scripts automatically generate a corresponding <b>world area prefab</b>, with a LOD model of the scene geometry and a loading zone surrounding it. All of these area prefabs are then placed in the Beryl Isle base scene, which houses everything common to the island (lighting, ambience, sky, etc.) As you run around in that base scene, the prefabs check where you are and additively load / unload their corresponding scenes.</p>
           <p>This workflow also meshed really well with the procedural polygon tool: since most of the geometry in the game is procedurally generated, these scripts can automatically make accurate scene LODs by running that same code with the settings turned all the way down.</p>
-          <p>Overall, I'm happy with how this workflow came out — it made everything from large-scale collaboration to small scene fixes very painless throughout development. If I were to iterate on it more, I'd move away from using axis-aligned bounding boxes as loading zones, since they didn't always intuitively capture the extent of a world area.</p>
+          <p>Overall, I'm happy with how this workflow came out — it made everything from large-scale collaboration to small scene fixes very painless throughout development. If I were to iterate on it more, I'd move away from using axis-aligned bounding boxes as loading zones, since they didn't always intuitively capture the extent of an area.</p>
           <p>You can check out the editor scripts behind all of this in the <a href="https://github.com/sflanagan33/ToBI-Samples/tree/master/World" target="_blank">ToBI sample repository</a>.</p>
         </div>
         
@@ -187,8 +187,8 @@
         
         <div class="contained-text">
           <h1 style="color: #FFC107">CHARACTERS & ANIMATION</h1>
-          <p>One of my personal goals on ToBI was to create a fully hand-animated 3D character in Unity, which I hadn't done in any of my projects before. Since the cornerstone of any 3D platformer is the main character's moveset, a big part of my pre-production effort went into creating Luke the Wolf and figuring out how I wanted him to control.</p>
-          <p>I also wanted the rest of the team to be able to design their own fun characters and enemies, so I built Luke on top of a custom, generic character state machine system, which saw a huge amount of use during development.</p>
+          <p>One of my personal goals on ToBI was to create a fully hand-animated 3D character in Unity, which I hadn't done in any of my games before. Since the cornerstone of any 3D platformer is the main character's moveset, a big part of my pre-production effort went into creating Luke the Wolf and figuring out how I wanted him to control.</p>
+          <p>I also wanted the rest of the team to be able to design their own fun characters and enemies, so I built Luke on top of a custom, generic state machine system.</p>
         </div>
         
         <div class="contained-images">
@@ -201,32 +201,36 @@
         <div class="contained-text">
           <h2>Luke & Boyd</h2>
           <p>I was solely responsible for two characters — the protagonist, Luke, and a parrot enemy named Boyd who flies around and tries to slap you. I used Blender to model, rig, and animate both of them, and created their textures in Photoshop and Substance Painter.</p>
-          <p>Between them, they have around 50 animation clips (mostly for all of Luke's moves) adding up to about a minute of hand-keyed animation. Given the tone of the game, I had a great time getting really wacky with exaggeration and squash-and-stretch.</p>
-          <p>Both characters also have some subtle touches of procedural animation, which helps them feel more lively and responsive. Boyd's tail is animated entirely in code as a springy chain of masses.</p>
-          <p>Luke has an additive "lean blend" which makes him quickly tilt / look to face the player's input direction. His pupils are on a render texture, so they can track motion or swirl around when he gets hurt. His ears, cap brim, and pant strings all use Unity's cloth component to simulate some floppy secondary action.</p>
+          <p>Between them, they have around 50 animation clips (mostly for all of Luke's moves) adding up to about a minute of hand-keyed animation. Given the tone of the game, I had a great time getting a bit wacky with the squash-and-stretch.</p>
+          <p>Both characters also have some subtle touches of procedural animation, which helps to make them feel more lively and responsive. Boyd's tail is animated entirely in code as a springy chain of masses.</p>
+          <p>Luke has an additive "lean blend", which I use to make him quickly face the player's input direction. His pupils are on a render texture, so they can track motion or swirl around when he gets hurt. His ears, cap brim, and drawstrings all use Unity's cloth component to simulate some floppy secondary action.</p>
           <p>On top of the hand-animated squash-and-stretch, I also programmed in a procedural way to jiggle Luke's scale — useful for game feel when a collectible flies into him, etc. When his rigidbody collides with the world, the accelerations involved are also routed into the procedural jiggling.</p>
         </div>
         
         <div class="contained-images">
           <video autoplay muted loop style="width:50%; float:left;"><source src="tobi/luke.mp4" type="video/mp4"></video>
           <video autoplay muted loop style="width:50%; float:left;"><source src="tobi/boyd.mp4" type="video/mp4"></video>
-          <video autoplay muted loop style="width:33.33%; float:left;"><source src="tobi/luke-eyes.mp4" type="video/mp4"></video>
+          <video autoplay muted loop style="width:33.33%; float:left;"><source src="tobi/luke-lean.mp4" type="video/mp4"></video>
           <video autoplay muted loop style="width:33.33%; float:left;"><source src="tobi/luke-eyes.mp4" type="video/mp4"></video>
           <video autoplay muted loop style="width:33.33%; float:left;"><source src="tobi/luke-squash.mp4" type="video/mp4"></video>
         </div>
         
         <div class="clear"></div>
         
-        <!------------------------------------------------------------- Character System -->
+        <!------------------------------------------------------------- HIERARCHICAL STATES -->
          
         <div class="contained-text">
           <h2>Character System</h2>
-          <p>Text text text.</p>
-          <p>The other members of my team used this same system to implement their own characters and enemies — a football ram, an exploding frog, an alien saucer, a flamingo, and even the cars driving around.</p>
-          <p>You can check out the core character scripts and an example implementation in the <a href="" target="_blank">ToBI sample repository</a>.</p>
+          <p>As I mentioned before, all of the characters in ToBI descend from the same generic character system. The goal here was twofold: to have a strongly-typed, well-timed way to design characters as state machines, and to prevent the team from having to constantly solve the same problem. In code, each character is a set of states with transitions.</p>
+          <p>One unique feature of my system is that states can be <b>hierarchical</b>, using polymorphism to cut down on code re-use. Many of Luke's states are not concrete actions like "punching", but encapsulations of more abstract behavior that might be needed in many sub-states. For instance, <tt>LukeHealthyState</tt> (one of the most abstract states) is responsible for transitioning to one of the <tt>LukeHurtState</tt>s when you take damage — logic that almost every normal state needs to include.</p>
+          <p>If you graphed the way states are subclassed, it'd look like a tree (see right) with the most abstract states at the top and the most concrete ones at the bottom. Crucially, because transitions are evaluated from the top of the tree to the bottom, the most generic concerns (did we take damage the last frame?) take precedence over the more specific ones in an intuitive way.</p>
+          <p>The other members of the team used this same system to implement their own characters and enemies — a football ram, an exploding frog, an alien saucer, a flamingo, and even the cars that are driving around the island.</p>
+          <p>You can check out the core character classes, an example implementation, and Boyd's code in the <a href="https://github.com/sflanagan33/ToBI-Samples/tree/master/Characters" target="_blank">ToBI sample repository</a>.</p>
         </div>
         
         <div class="contained-images">
+          <img src="tobi/states.png" style="width: 100%; padding:30px; background-color:#f8a402">
+          <img src="tobi/states-code.png" style="width: 100%; padding-top:0px">
         </div>
         
         <div class="clear"></div>
