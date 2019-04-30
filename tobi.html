@@ -15,8 +15,8 @@
   
     h1,h2,h3,h4,h5 { font-family: "Poppins", sans-serif; line-height: 90%; }
     h1 { font-size: 60px; font-weight: 800; padding-bottom: 0.25em; }
-    h2 { font-size: 30px; font-weight: 600; }
-    h3 { font-size: 20px; font-weight: 400; }
+    h2 { font-size: 30px; font-weight: 600; color: #371887; }
+    h3 { font-size: 20px; font-weight: 400; color: #371887; }
     body { font-family: "Open Sans", sans-serif; font-size: 15px; }
     a { font-family: "Open Sans", sans-serif; font-weight: 600; color: #E91E63; }
     
@@ -63,12 +63,15 @@
       margin: 0px;
     }
     
+    .aspect-ratio { position:relative; width:100%; height:0; padding-bottom:58.75% }
+    .aspect-ratio iframe { position:absolute; width:100%; height:100%; left:0; top:0; }
+    
     .back {
       position: fixed;
       left: 20px;
       top: 20px;
       font-size: 30px;
-      color: #000000;
+      color: #371887;
     }
     
     .back:hover {
@@ -99,8 +102,9 @@
           <h1 style="font-size:80px; color:#E91E63;">TROUBLE ON BERYL ISLE</h1>
           <br>
           <p>Hey! If you're reading this, you might be a fellow gamedev wondering what I did to make this project possible. It's great to meet you!</p>
-          <p>This article is a detailed breakdown of the tools, systems, characters, and effects  I did for ToBI over a year of development — from doodling on notebook paper to presenting the game at DreamHack Atlanta.</p>
+          <p>This article is a detailed breakdown of the tools, systems, characters, and effects I did for ToBI over a year of development — from doodling on notebook paper to presenting the game at DreamHack Atlanta.</p>
           <p>I've linked to code samples and assets throughout, but if you're curious about anything in the game I don't cover here, feel free to <a href="mailto:sflanagan33@gatech.edu?subject=Inquiry">contact me</a>.</p>
+          <p>But first, let's watch some gameplay from the final product:</p>
         </div>
 
         <div class="contained-images">
@@ -109,6 +113,19 @@
         
         <div class="clear"></div>
         
+      </div>
+    </div>
+    
+    <!----------------------------------------------------------------------------->
+    <!------------------------------------------------------------- EDITOR TOOLS -->
+    <!----------------------------------------------------------------------------->
+    
+    <hr>
+    <div style="background: #000000">
+      <div class="container">
+        <div class="aspect-ratio">
+          <iframe id="video" style="padding-top: 15px; padding-bottom:15px;" src="http://www.youtube.com/embed/XDdWd_lE6a4?rel=0" frameborder="0" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
     
@@ -124,7 +141,7 @@
         
         <div class="contained-text">
           <h1 style="color:#E91E63;">EDITOR TOOLS</h1>
-          <p>I pitched Trouble on Beryl Isle as a streaming, open-world adventure, which is about the highest form of hubris a student game project might be capable of. But thanks to a set of editor tools and workflows I developed during pre-production (along with a <i>lot</i> of dedication from everyone on the content side of things) we were able to pull off something remarkably close to that original concept.</p>
+          <p>I pitched Trouble on Beryl Isle as a streaming, open-world adventure, which is about the highest form of hubris a team of student volunteers might be capable of. But thanks to a set of editor tools and workflows I developed during pre-production (along with a <i>lot</i> of dedication from everyone on the content side of things) we were able to pull off something remarkably close to that original concept.</p>
         </div>
         
         <div class="contained-images">
@@ -187,11 +204,14 @@
         
         <div class="contained-text">
           <h1 style="color: #FFC107">CHARACTERS & ANIMATION</h1>
-          <p>One of my personal goals on ToBI was to create a fully hand-animated 3D character in Unity, which I hadn't done in any of my games before. Since the cornerstone of any 3D platformer is the main character's moveset, a big part of my pre-production effort went into creating Luke the Wolf and figuring out how I wanted him to control.</p>
-          <p>I also wanted the rest of the team to be able to design their own fun characters and enemies, so I built Luke on top of a custom, generic state machine system.</p>
+          <p>One of my personal goals on ToBI was to create fully hand-animated 3D characters in Unity, which I hadn't done in any of my games before. Since the cornerstone of any 3D platformer is the main character's moveset, a big part of my pre-production effort went into creating Luke the Wolf and figuring out how I wanted him to control.</p>
+          <p>I also wanted the rest of the team to be able to design their own fun characters and enemies, so I built Luke on top of a custom, generic state machine system that saw a ton of use throughout development.</p>
         </div>
         
-        <div class="contained-images">
+        <div class="contained-images" style="text-align: center">
+          <img src="tobi/characters.png" style="width: 100%;">
+          <video autoplay muted loop><source src="tobi/characters-example.mp4" type="video/mp4"></video>
+          <p class="small">from character doodles to working gameplay</p>
         </div>
         
         <div class="clear"></div>
@@ -418,7 +438,7 @@
       <div class="container">
       
         <div class="contained-text">
-          <h1 style="color:#E91E63;">CLOSING THOUGHTS</h1>
+          <h1 style="color:#371887;">CLOSING THOUGHTS</h1>
           <p>I learned a ton from leading this project for a year, and got to deepen my knowledge in disciplines all over game development — from editor tools to character animation to shader wizardry. I hope this peek behind the curtain was enlightening.</p>
           <p>Since I didn't make this game alone, I wanted to give a shout-out here to all my friends in VGDev who helped build Beryl Isle and populate it with fun characters. This game was a tremendous labor of love from everyone involved.</p>
           <p>If you haven't played it yet, you can <a href="http://vgdev.gtorg.gatech.edu/game/trouble-on-beryl-isle/" target="_blank">download the game here</a> from the VGDev website!</p>
