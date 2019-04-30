@@ -100,7 +100,7 @@
           <br>
           <p>Hey! If you're reading this, you might be a fellow gamedev wondering what I did to make this project possible. It's great to meet you!</p>
           <p>This article is a detailed breakdown of the tools, systems, characters, and effects  I did for ToBI over a year of development — from doodling on notebook paper to presenting the game at DreamHack Atlanta.</p>
-          <p>I've linked to code samples and assets throughout, but if you're curious about anything in the game I don't cover here, feel free to <a href="mailto:sflanagan33@gatech.edu?subject=Inquiry">contact me</a>!</p>
+          <p>I've linked to code samples and assets throughout, but if you're curious about anything in the game I don't cover here, feel free to <a href="mailto:sflanagan33@gatech.edu?subject=Inquiry">contact me</a>.</p>
         </div>
 
         <div class="contained-images">
@@ -224,7 +224,7 @@
           <p>As I mentioned before, all of the characters in ToBI descend from the same generic character system. The goal here was twofold: to have a strongly-typed, well-timed way to design characters as state machines, and to prevent the team from having to constantly solve the same problem. In code, each character is a set of states with transitions.</p>
           <p>One unique feature of my system is that states can be <b>hierarchical</b>, using polymorphism to cut down on code re-use. Many of Luke's states are not concrete actions like "punching", but encapsulations of more abstract behavior that might be needed in many sub-states. For instance, <tt>LukeHealthyState</tt> (one of the most abstract states) is responsible for transitioning to one of the <tt>LukeHurtState</tt>s when you take damage — logic that almost every normal state needs to include.</p>
           <p>If you graphed the way states are subclassed, it'd look like a tree (see right) with the most abstract states at the top and the most concrete ones at the bottom. Crucially, because transitions are evaluated from the top of the tree to the bottom, the most generic concerns (did we take damage the last frame?) take precedence over the more specific ones in an intuitive way.</p>
-          <p>The other members of the team used this same system to implement their own characters and enemies — a football ram, an exploding frog, an alien saucer, a flamingo, and even the cars that are driving around the island.</p>
+          <p>The other members of the team used this same system to implement their own characters and enemies — a football ram, an exploding frog, an alien saucer, a flamingo, and even the cars that drive around the island.</p>
           <p>You can check out the core character classes, an example implementation, and Boyd's code in the <a href="https://github.com/sflanagan33/ToBI-Samples/tree/master/Characters" target="_blank">ToBI sample repository</a>.</p>
         </div>
         
@@ -395,7 +395,7 @@
         <div class="contained-text">
           <h3>Level of Detail</h3>
           <p>Obviously, nobody has the VRAM to simulate an entire ocean like that, so this is where LOD tricks come into play. After a certain distance, the detailed displacement-and-velocity "near simulation" starts to fade into a much simpler "far simulation", which is basically just the classic "scroll some normal maps over each other" trick for making cheap water. This is the version of the water you're looking at from the tops of buildings.</p>
-          <p>This also ended up being one of those situations where putting an execution branch in a shader was worth it. Computing the normals for the near simulation is extremely expensive per-pixel, and having the surface shader completely bypass those lines upon reaching the far LOD made it much more performant, given how much distant ocean is usually onscreen.</p>
+          <p>This also ended up being one of those situations where putting an execution branch in a shader was worth it. Computing the normals for the near simulation is extremely expensive per-pixel, and having the surface shader completely bypass those lines upon reaching the far LOD made it much more performant, given how much distant ocean is usually on-screen.</p>
           <p>While overall I'm really happy with how the water in ToBI turned out, in future games I'd like to focus more on doing surface foam and impact particles to really sell the water interacting with objects.</p>
           <p>You can check out the assets and shaders that go into the effect in the <a href="https://github.com/sflanagan33/ToBI-Samples/tree/master/Water" target="_blank">ToBI sample repository</a>.</p>
         </div>
@@ -418,12 +418,15 @@
       <div class="container">
       
         <div class="contained-text">
-          <h1>CLOSING THOUGHTS</h1>
-          <p>I learned a ton from working on this project for a year - </p>
+          <h1 style="color:#E91E63;">CLOSING THOUGHTS</h1>
+          <p>I learned a ton from leading this project for a year, and got to deepen my knowledge in disciplines all over game development — from editor tools to character animation to shader wizardry. I hope this peek behind the curtain was enlightening.</p>
+          <p>Since I didn't make this game alone, I wanted to give a shout-out here to all my friends in VGDev who helped build Beryl Isle and populate it with fun characters. This game was a tremendous labor of love from everyone involved.</p>
+          <p>If you haven't played it yet, you can <a href="http://vgdev.gtorg.gatech.edu/game/trouble-on-beryl-isle/" target="_blank">download the game here</a> from the VGDev website!</p>
+          <p>And again — if you have any questions about an aspect of the game's development I didn't cover here, or are interested in the kind of work that I do, <a href="mailto:sflanagan33@gatech.edu?subject=Inquiry">my inbox is always open</a>.</p>
         </div>
         
         <div class="contained-images">
-          <img src="tobi/luke.png">
+          <img src="tobi/luke.png" style="padding-top:40px">
         </div>
         
         <div class="clear"></div>
